@@ -22,7 +22,10 @@
       "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-test-mobile-debug.js)",
       "Bash(taskkill //PID 4280 //F)",
       "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-test-final.js)",
-      "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-test-fullsite.js)"
+      "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-test-fullsite.js)",
+      "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-test-imagefix.js)",
+      "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-test-featured.js)",
+      "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-test-buttons.js)"
     ]
   }
 }

@@ -269,6 +269,31 @@ html {
   transform: translateY(0);
 }
 
+/* Ghost on dark: hairline outline + cream text for plum/ink surfaces.
+   Hover fills with cream → text flips back to dark for inverted contrast. */
+.cine-btn--ghost-on-dark {
+  background: transparent;
+  color: var(--cream-50);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--cream-100) 35%, transparent);
+}
+.cine-btn--ghost-on-dark::before {
+  background: var(--cream-50);
+  transform: translateY(101%);
+  inset: 0;
+  z-index: -1;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cine-btn--ghost-on-dark:hover {
+  background: transparent;
+  color: var(--ink-900);
+  box-shadow:
+    inset 0 0 0 1px var(--cream-50),
+    0 16px 32px -18px rgb(0 0 0 / 0.4);
+}
+.cine-btn--ghost-on-dark:hover::before {
+  transform: translateY(0);
+}
+
 /* Arrow: shifts right, never spins */
 .cine-arrow {
   position: relative;
@@ -337,11 +362,19 @@ html {
   letter-spacing: -0.025em;
 }
 
-/* Focus ring */
+/* Focus ring — plum by default for light surfaces, brighter mint when the
+   focused control is inside a dark section so the ring stays visible. */
 :focus-visible {
   outline: 2px solid var(--plum-500);
   outline-offset: 3px;
   border-radius: 6px;
+}
+/* Dark sections (SectionFrame tone="ink" / "plum") get a mint outline for
+   adequate contrast against the deep plum/ink background. */
+.bg-ink :focus-visible,
+.bg-plum-900 :focus-visible,
+.bg-plum-800 :focus-visible {
+  outline-color: var(--mint-300);
 }
 
 /* Respect reduced motion */

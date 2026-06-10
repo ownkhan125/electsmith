@@ -6,6 +6,7 @@ import SectionFrame from '@/components/section-frame'
 import Arrow from '@/components/arrow'
 import CtaSection from '@/components/cta-section'
 import RsvpForm from '@/components/forms/rsvp-form'
+import Reveal from '@/components/reveal'
 import { EVENTS, getEvent, getRelatedEvents } from '@/data/events'
 
 export const generateStaticParams = () => EVENTS.map((e) => ({ slug: e.slug }))
@@ -55,18 +56,27 @@ const EventDetailPage = async ({ params }) => {
       />
 
       {/* Featured image */}
-      <section className="relative pb-4">
-        <div className="mx-auto w-full max-w-[1280px] px-6 sm:px-10 md:px-16">
-          <div
-            data-reveal
-            className="relative aspect-[16/9] overflow-hidden rounded-[28px] border border-plum-500/15 shadow-[0_30px_60px_-30px_rgb(var(--shadow-warm)_/_0.4)]"
-          >
+      <section className="relative pt-6 pb-12 sm:pt-10 md:pt-14 md:pb-20">
+        <div className="mx-auto w-full max-w-[1200px] px-6 sm:px-10 md:px-16">
+          {/* Above-image meta strip — gives vertical rhythm above the photo */}
+          <div className="mb-6 flex items-center gap-4 md:mb-8">
+            <span className="block h-px w-12 bg-plum-500/50 sm:w-16" />
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-plum-600 sm:text-xs">
+              {event.cat} · {event.fullDate}
+            </span>
+            <span className="hidden h-px flex-1 max-w-[180px] bg-plum-500/25 sm:block" />
+            <span className="hidden font-mono text-[10px] uppercase tracking-[0.3em] text-ink/55 sm:inline">
+              {event.venue}
+            </span>
+          </div>
+
+          <Reveal className="relative aspect-[16/9] overflow-hidden rounded-[28px] border border-plum-500/15 shadow-[0_30px_60px_-30px_rgb(var(--shadow-warm)_/_0.4)] sm:aspect-[21/9]">
             <Image
               src={event.image}
               alt={event.title}
               fill
               priority
-              sizes="(min-width: 1280px) 1280px, 100vw"
+              sizes="(min-width: 1200px) 1200px, 100vw"
               className="object-cover"
             />
             <div
@@ -80,13 +90,18 @@ const EventDetailPage = async ({ params }) => {
             <div className="absolute left-6 bottom-6 flex flex-wrap items-center gap-3 sm:left-8 sm:bottom-8">
               <span className="inline-flex items-center gap-2 rounded-full border border-cream-100/30 bg-ink/35 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-cream-100 backdrop-blur">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-mint-300" />
-                {event.cat}
-              </span>
-              <span className="rounded-full border border-cream-100/30 bg-ink/35 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-cream-100 backdrop-blur">
-                Hosted by {event.host}
+                Featured event
               </span>
             </div>
-          </div>
+          </Reveal>
+
+          {/* Below-image caption — venue + host, with vertical rhythm */}
+          <figcaption className="mt-5 flex flex-col gap-2 text-ink/65 sm:mt-6 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+            <p className="font-display italic text-base sm:text-lg">{event.venue}</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink/45">
+              Hosted by {event.host}
+            </p>
+          </figcaption>
         </div>
       </section>
 

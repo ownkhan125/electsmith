@@ -38,7 +38,7 @@ const CtaSection = ({
             {primary.label}
           </CineButton>
           {secondary && (
-            <CineButton href={secondary.href} variant="ghost">
+            <CineButton href={secondary.href} variant="ghost-on-dark">
               {secondary.label}
             </CineButton>
           )}

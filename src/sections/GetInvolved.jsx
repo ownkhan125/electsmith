@@ -93,7 +93,7 @@ const GetInvolved = () => {
             </ul>
 
             <div className="mt-10">
-              <CineButton href="/volunteer" variant="ghost">
+              <CineButton href="/volunteer" variant="ghost-on-dark">
                 Sign up to help
               </CineButton>
             </div>

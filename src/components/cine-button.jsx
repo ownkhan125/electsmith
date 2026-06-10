@@ -7,10 +7,18 @@ import { cn } from '@/lib/cn'
 /**
  * CineButton — premium CTA.
  *  variants:
- *    "primary"   — filled plum, gentle lift, inset sweep
- *    "ghost"     — outline that fills on hover
- *    "on-dark"   — cream pill for use on plum/ink backgrounds
+ *    "primary"       — filled plum, gentle lift, inset sweep
+ *    "ghost"         — outline that fills on hover (use on LIGHT surfaces)
+ *    "ghost-on-dark" — cream outline + cream text (use on PLUM/INK surfaces)
+ *    "on-dark"       — cream pill for use on plum/ink backgrounds
  */
+const VARIANT_CLS = {
+  primary: '',
+  ghost: 'cine-btn--ghost',
+  'ghost-on-dark': 'cine-btn--ghost-on-dark',
+  'on-dark': 'cine-btn--on-dark',
+}
+
 const CineButton = ({
   href,
   onClick,
@@ -21,8 +29,7 @@ const CineButton = ({
   className = '',
   ariaLabel,
 }) => {
-  const variantCls =
-    variant === 'ghost' ? 'cine-btn--ghost' : variant === 'on-dark' ? 'cine-btn--on-dark' : ''
+  const variantCls = VARIANT_CLS[variant] || ''
 
   const sizeCls = size === 'sm' ? 'text-xs px-4 py-2.5' : ''
 
@@ -64,7 +71,7 @@ CineButton.propTypes = {
   onClick: PropTypes.func,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   children: PropTypes.node.isRequired,
-  variant: PropTypes.oneOf(['primary', 'ghost', 'on-dark']),
+  variant: PropTypes.oneOf(['primary', 'ghost', 'ghost-on-dark', 'on-dark']),
   size: PropTypes.oneOf(['sm', 'md']),
   className: PropTypes.string,
   ariaLabel: PropTypes.string,
