@@ -1,26 +1,306 @@
-@import "tailwindcss";
+/* source(none) disables Tailwind's automatic content detection.
+   Without this, the scanner walks the project tree and panics on a
+   self-referential symlink inside .claude/skills/playwright-skill. */
+@import "tailwindcss" source(none);
+@source "../../src/**/*.{js,jsx,ts,tsx,css}";
+
+/* ---------------------------------------------------------------
+   ElectSmith — campaign theme
+   Palette: #744577 (plum)  #F0E9B6 (cream)
+            #ACCFA3 (sage)  #84C5B1 (mint)
+--------------------------------------------------------------- */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --plum-50:  #f7eef8;
+  --plum-100: #ead4ec;
+  --plum-200: #d4a9d8;
+  --plum-300: #b97cc0;
+  --plum-400: #9a5ca2;
+  --plum-500: #744577; /* brand */
+  --plum-600: #5e3661;
+  --plum-700: #482a4b;
+  --plum-800: #321e34;
+  --plum-900: #1c1020;
+  --plum-950: #110612;
+
+  --cream-50:  #fdfaeb;
+  --cream-100: #f9f3cf;
+  --cream-200: #f0e9b6; /* brand */
+  --cream-300: #e5dc94;
+  --cream-400: #d4c96e;
+
+  --sage-50:  #f0f7ec;
+  --sage-100: #e0efd6;
+  --sage-200: #c8e2b6;
+  --sage-300: #accfa3; /* brand */
+  --sage-400: #8db582;
+  --sage-500: #6f9b65;
+
+  --mint-50:  #ecf6f1;
+  --mint-100: #d6ecde;
+  --mint-200: #b9dfca;
+  --mint-300: #84c5b1; /* brand */
+  --mint-400: #5fa993;
+  --mint-500: #4a8a76;
+
+  --ink-900: #0e0712;   /* near-black plum */
+  --ink-700: #2a1d2f;
+  --paper:   #faf6e9;   /* warm cream paper */
+  --paper-2: #f3eed7;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Tailwind palette tokens */
+  --color-plum:    var(--plum-500);
+  --color-plum-50: var(--plum-50);
+  --color-plum-100: var(--plum-100);
+  --color-plum-200: var(--plum-200);
+  --color-plum-300: var(--plum-300);
+  --color-plum-400: var(--plum-400);
+  --color-plum-500: var(--plum-500);
+  --color-plum-600: var(--plum-600);
+  --color-plum-700: var(--plum-700);
+  --color-plum-800: var(--plum-800);
+  --color-plum-900: var(--plum-900);
+  --color-plum-950: var(--plum-950);
+
+  --color-cream:    var(--cream-200);
+  --color-cream-50: var(--cream-50);
+  --color-cream-100: var(--cream-100);
+  --color-cream-200: var(--cream-200);
+  --color-cream-300: var(--cream-300);
+  --color-cream-400: var(--cream-400);
+
+  --color-sage:    var(--sage-300);
+  --color-sage-50: var(--sage-50);
+  --color-sage-100: var(--sage-100);
+  --color-sage-200: var(--sage-200);
+  --color-sage-300: var(--sage-300);
+  --color-sage-400: var(--sage-400);
+  --color-sage-500: var(--sage-500);
+
+  --color-mint:    var(--mint-300);
+  --color-mint-50: var(--mint-50);
+  --color-mint-100: var(--mint-100);
+  --color-mint-200: var(--mint-200);
+  --color-mint-300: var(--mint-300);
+  --color-mint-400: var(--mint-400);
+  --color-mint-500: var(--mint-500);
+
+  --color-ink:     var(--ink-900);
+  --color-ink-700: var(--ink-700);
+  --color-paper:   var(--paper);
+  --color-paper-2: var(--paper-2);
+
+  --color-background: var(--paper);
+  --color-foreground: var(--ink-900);
+
+  --font-display: var(--font-fraunces);
+  --font-sans:    var(--font-inter-tight);
+  --font-mono:    var(--font-geist-mono);
+
+  --tracking-tightest: -0.045em;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ---------------------------------------------------------------
+   Base
+--------------------------------------------------------------- */
+
+html, body {
+  background: var(--paper);
+  color: var(--ink-900);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* warm grain to lift the cream */
+  background-image:
+    radial-gradient(1200px 600px at 10% -10%, color-mix(in oklab, var(--mint-300) 35%, transparent), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, color-mix(in oklab, var(--cream-300) 60%, transparent), transparent 60%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: var(--plum-500);
+  color: var(--cream-100);
+}
+
+/* hide scrollbar inner shadow on overflow blocks */
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: color-mix(in oklab, var(--plum-500) 30%, transparent); border-radius: 999px; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+/* Lock smooth scrolling globally */
+html { scroll-behavior: smooth; }
+
+/* ---------------------------------------------------------------
+   Reveal primitives (initial state hides content; JS reveals)
+--------------------------------------------------------------- */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+}
+[data-reveal="x"] { transform: translateX(-40px); }
+[data-line] {
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+[data-line="v"] {
+  transform-origin: top center;
+  transform: scaleY(0);
+}
+
+/* Split-text per-char baseline */
+.split-char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* ---------------------------------------------------------------
+   Premium button system (used by <CineButton>)
+   - Primary: solid plum, swept inset shine on hover, gentle lift
+   - Ghost:   thin outline that fills with plum on hover
+   Goal: clean, restrained, premium — no acrobatics.
+--------------------------------------------------------------- */
+
+.cine-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.95rem 1.5rem 0.95rem 1.7rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.005em;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--plum-500);
+  color: var(--cream-50);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset,
+              0 8px 22px -14px rgba(40,15,55,0.55);
+  transition:
+    transform 0.55s cubic-bezier(.22,1,.36,1),
+    box-shadow 0.45s ease,
+    background-color 0.45s ease,
+    color 0.35s ease,
+    padding 0.45s cubic-bezier(.22,1,.36,1);
+}
+/* Soft inset sweep (directional, low-contrast) */
+.cine-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    color-mix(in oklab, var(--cream-200) 40%, transparent) 50%,
+    transparent 70%
+  );
+  transform: translateX(-110%);
+  transition: transform 0.9s cubic-bezier(.22,1,.36,1);
+  pointer-events: none;
+}
+.cine-btn:hover {
+  transform: translateY(-1px);
+  background: var(--plum-600);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset,
+              0 16px 32px -18px rgba(40,15,55,0.7);
+  padding-right: 1.65rem;
+}
+.cine-btn:hover::before { transform: translateX(110%); }
+.cine-btn:active { transform: translateY(0); }
+
+/* Ghost: outline that fills */
+.cine-btn--ghost {
+  background: transparent;
+  color: var(--ink-900);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--plum-500) 40%, transparent);
+}
+.cine-btn--ghost::before {
+  background: var(--plum-500);
+  transform: translateX(0) translateY(101%);
+  inset: 0;
+  z-index: -1;
+  transition: transform 0.55s cubic-bezier(.22,1,.36,1);
+}
+.cine-btn--ghost:hover {
+  background: transparent;
+  color: var(--cream-50);
+  box-shadow: inset 0 0 0 1px var(--plum-500),
+              0 16px 32px -18px rgba(40,15,55,0.55);
+}
+.cine-btn--ghost:hover::before { transform: translateY(0); }
+
+/* Arrow: shifts right, never spins */
+.cine-arrow {
+  position: relative;
+  display: inline-flex;
+  height: 1.6rem;
+  width: 1.6rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 35%, transparent);
+  transition: transform 0.55s cubic-bezier(.22,1,.36,1),
+              box-shadow 0.4s ease,
+              background-color 0.4s ease;
+}
+.cine-btn:hover .cine-arrow {
+  transform: translateX(3px);
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+
+/* Dark-tone variant (for use on plum/ink backgrounds) */
+.cine-btn--on-dark {
+  background: var(--cream-50);
+  color: var(--ink-900);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04) inset,
+              0 8px 22px -14px rgba(0,0,0,0.4);
+}
+.cine-btn--on-dark:hover {
+  background: var(--mint-300);
+  color: var(--ink-900);
+}
+
+/* ---------------------------------------------------------------
+   Marquee
+--------------------------------------------------------------- */
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+
+/* ---------------------------------------------------------------
+   Decorative noise dot field
+--------------------------------------------------------------- */
+
+.dot-field {
+  background-image: radial-gradient(circle at 1px 1px, color-mix(in oklab, var(--plum-500) 28%, transparent) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+/* Brand serif: micro letter-spacing tweak */
+.font-display {
+  font-feature-settings: "ss01", "ss02";
+  letter-spacing: -0.025em;
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--plum-500);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal], [data-line] { opacity: 1; transform: none; }
+  .marquee-track { animation: none; }
 }
