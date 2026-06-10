@@ -1,7 +1,8 @@
-"use client";
+'use client'
 
-import PageHero from "@/components/page-hero";
-import SectionFrame from "@/components/section-frame";
+import PropTypes from 'prop-types'
+import PageHero from '@/components/page-hero'
+import SectionFrame from '@/components/section-frame'
 
 /**
  * LegalPage — single-column long-form page for privacy/terms/accessibility.
@@ -21,9 +22,7 @@ const LegalPage = ({ title, eyebrow, intro, updated, sections, crumbs }) => {
             <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-plum-500">
               Last updated
             </p>
-            <p className="mt-1 font-display text-xl italic text-ink">
-              {updated}
-            </p>
+            <p className="mt-1 font-display text-xl italic text-ink">{updated}</p>
           </div>
         }
       />
@@ -33,11 +32,9 @@ const LegalPage = ({ title, eyebrow, intro, updated, sections, crumbs }) => {
           {sections.map((s, i) => (
             <div key={s.heading} data-reveal className="mb-12 last:mb-0">
               <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-plum-500">
-                §{String(i + 1).padStart(2, "0")}
+                §{String(i + 1).padStart(2, '0')}
               </p>
-              <h2 className="mt-3 font-display text-2xl text-ink sm:text-3xl">
-                {s.heading}
-              </h2>
+              <h2 className="mt-3 font-display text-2xl text-ink sm:text-3xl">{s.heading}</h2>
               <div className="mt-5 flex flex-col gap-4 text-base leading-relaxed text-ink/80">
                 {(Array.isArray(s.body) ? s.body : [s.body]).map((p, j) => (
                   <p key={j}>{p}</p>
@@ -48,7 +45,26 @@ const LegalPage = ({ title, eyebrow, intro, updated, sections, crumbs }) => {
         </div>
       </SectionFrame>
     </>
-  );
-};
+  )
+}
 
-export default LegalPage;
+LegalPage.propTypes = {
+  title: PropTypes.string.isRequired,
+  eyebrow: PropTypes.string,
+  intro: PropTypes.string,
+  updated: PropTypes.string.isRequired,
+  sections: PropTypes.arrayOf(
+    PropTypes.shape({
+      heading: PropTypes.string.isRequired,
+      body: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]).isRequired,
+    }),
+  ).isRequired,
+  crumbs: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      href: PropTypes.string,
+    }),
+  ),
+}
+
+export default LegalPage

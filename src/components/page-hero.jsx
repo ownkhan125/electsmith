@@ -1,7 +1,8 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import SplitText from "@/components/split-text";
+import Link from 'next/link'
+import PropTypes from 'prop-types'
+import SplitText from '@/components/split-text'
 
 /**
  * PageHero — shared top-of-page hero for every inner page.
@@ -21,16 +22,15 @@ const PageHero = ({ eyebrow, title, intro, crumbs, right }) => {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(60% 50% at 85% 0%, color-mix(in oklab, var(--mint-300) 20%, transparent) 0%, transparent 70%), radial-gradient(50% 60% at 0% 100%, color-mix(in oklab, var(--cream-300) 30%, transparent) 0%, transparent 70%)",
+            'radial-gradient(60% 50% at 85% 0%, color-mix(in oklab, var(--mint-300) 20%, transparent) 0%, transparent 70%), radial-gradient(50% 60% at 0% 100%, color-mix(in oklab, var(--cream-300) 30%, transparent) 0%, transparent 70%)',
         }}
       />
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{
-          backgroundImage:
-            "radial-gradient(circle at 1px 1px, var(--ink-900) 1px, transparent 0)",
-          backgroundSize: "3px 3px",
+          backgroundImage: 'radial-gradient(circle at 1px 1px, var(--ink-900) 1px, transparent 0)',
+          backgroundSize: '3px 3px',
         }}
       />
 
@@ -43,10 +43,7 @@ const PageHero = ({ eyebrow, title, intro, crumbs, right }) => {
                 <li key={`${i}-${c.label}`} className="flex items-center gap-2">
                   {i > 0 && <span className="text-plum-500/40">/</span>}
                   {c.href && i < crumbs.length - 1 ? (
-                    <Link
-                      href={c.href}
-                      className="transition-colors hover:text-plum-500"
-                    >
+                    <Link href={c.href} className="transition-colors hover:text-plum-500">
                       {c.label}
                     </Link>
                   ) : (
@@ -87,7 +84,20 @@ const PageHero = ({ eyebrow, title, intro, crumbs, right }) => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default PageHero;
+PageHero.propTypes = {
+  eyebrow: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  intro: PropTypes.string,
+  crumbs: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      href: PropTypes.string,
+    }),
+  ),
+  right: PropTypes.node,
+}
+
+export default PageHero

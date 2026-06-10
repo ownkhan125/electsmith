@@ -1,15 +1,15 @@
-import Link from "next/link";
-import PageHero from "@/components/page-hero";
-import SectionFrame from "@/components/section-frame";
-import Arrow from "@/components/arrow";
-import CtaSection from "@/components/cta-section";
-import { ISSUES } from "@/data/issues";
+import Link from 'next/link'
+import PageHero from '@/components/page-hero'
+import SectionFrame from '@/components/section-frame'
+import Arrow from '@/components/arrow'
+import CtaSection from '@/components/cta-section'
+import { ISSUES } from '@/data/issues'
 
 export const metadata = {
-  title: "Issues",
+  title: 'Issues',
   description:
     "Six fights worth taking to Washington — Jordan Smith's policy priorities for Oregon's 3rd Congressional District.",
-};
+}
 
 const IssuesPage = () => {
   return (
@@ -18,7 +18,7 @@ const IssuesPage = () => {
         eyebrow="Issues — Chapter 02"
         title="Six fights worth taking to Washington."
         intro="These aren't talking points — they're the bills we'll introduce in the first session, paired with the floor votes we'll demand."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Issues" }]}
+        crumbs={[{ label: 'Home', href: '/' }, { label: 'Issues' }]}
       />
 
       <SectionFrame id="all-issues" eyebrow="The platform" tone="ink">
@@ -38,9 +38,7 @@ const IssuesPage = () => {
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center justify-between gap-3">
-                      <h2 className="font-display text-xl text-cream-50 sm:text-2xl">
-                        {it.title}
-                      </h2>
+                      <h2 className="font-display text-xl text-cream-50 sm:text-2xl">{it.title}</h2>
                       <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-cream-100/55">
                         {it.tag}
                       </span>
@@ -66,11 +64,11 @@ const IssuesPage = () => {
       <CtaSection
         title="Have an issue we missed?"
         copy="If your priority isn't on this list, write to the campaign — we read every email."
-        primary={{ label: "Get in touch", href: "/contact" }}
-        secondary={{ label: "Volunteer", href: "/volunteer" }}
+        primary={{ label: 'Get in touch', href: '/contact' }}
+        secondary={{ label: 'Volunteer', href: '/volunteer' }}
       />
     </>
-  );
-};
+  )
+}
 
-export default IssuesPage;
+export default IssuesPage

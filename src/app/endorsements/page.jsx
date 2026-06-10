@@ -1,17 +1,13 @@
-import PageHero from "@/components/page-hero";
-import SectionFrame from "@/components/section-frame";
-import CtaSection from "@/components/cta-section";
-import {
-  TESTIMONIAL_QUOTES,
-  ORGANIZATIONS,
-  INDIVIDUALS,
-} from "@/data/endorsements";
+import PageHero from '@/components/page-hero'
+import SectionFrame from '@/components/section-frame'
+import CtaSection from '@/components/cta-section'
+import { TESTIMONIAL_QUOTES, ORGANIZATIONS, INDIVIDUALS } from '@/data/endorsements'
 
 export const metadata = {
-  title: "Endorsements",
+  title: 'Endorsements',
   description:
-    "The organizations and elected officials standing with Jordan Smith for Congress — backed by teachers, nurses, firefighters, farmers, and former opponents.",
-};
+    'The organizations and elected officials standing with Jordan Smith for Congress — backed by teachers, nurses, firefighters, farmers, and former opponents.',
+}
 
 const EndorsementsPage = () => {
   return (
@@ -20,7 +16,7 @@ const EndorsementsPage = () => {
         eyebrow="Endorsements — Chapter 04"
         title="Backed by people who do the actual work."
         intro="Teachers, nurses, firefighters, farmers, machinists, and a few former opponents. No corporate PACs — only people whose names fit on a school newsletter."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Endorsements" }]}
+        crumbs={[{ label: 'Home', href: '/' }, { label: 'Endorsements' }]}
       />
 
       {/* Quotes */}
@@ -66,11 +62,9 @@ const EndorsementsPage = () => {
             >
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-mint-300">
-                  {String(i + 1).padStart(2, "0")}
+                  {String(i + 1).padStart(2, '0')}
                 </p>
-                <p className="mt-3 font-display text-lg leading-tight text-cream-50">
-                  {o.name}
-                </p>
+                <p className="mt-3 font-display text-lg leading-tight text-cream-50">{o.name}</p>
                 <p className="mt-1 text-sm text-cream-100/70">{o.note}</p>
               </div>
               <span className="rounded-full border border-cream-100/20 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.25em] text-cream-100/70">
@@ -102,11 +96,11 @@ const EndorsementsPage = () => {
       <CtaSection
         title="Want to endorse?"
         copy="If your organization wants to add its name, we'd love to hear from you."
-        primary={{ label: "Contact the team", href: "/contact" }}
-        secondary={{ label: "Volunteer", href: "/volunteer" }}
+        primary={{ label: 'Contact the team', href: '/contact' }}
+        secondary={{ label: 'Volunteer', href: '/volunteer' }}
       />
     </>
-  );
-};
+  )
+}
 
-export default EndorsementsPage;
+export default EndorsementsPage

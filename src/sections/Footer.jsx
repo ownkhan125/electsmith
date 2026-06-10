@@ -1,63 +1,60 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { useEffect, useRef } from "react";
-import { gsap } from "@/animations/gsap-setup";
-import { CANDIDATE, SOCIALS } from "@/data/candidate";
+import Link from 'next/link'
+import { useEffect, useRef } from 'react'
+import { gsap } from '@/lib/gsap-setup'
+import { CANDIDATE, SOCIALS } from '@/data/candidate'
 
 const COLS = [
   {
-    title: "Campaign",
+    title: 'Campaign',
     links: [
-      { l: "About Jordan", h: "/about" },
-      { l: "Our Issues", h: "/issues" },
-      { l: "Endorsements", h: "/endorsements" },
-      { l: "News & press", h: "/news" },
+      { l: 'About Jordan', h: '/about' },
+      { l: 'Our Issues', h: '/issues' },
+      { l: 'Endorsements', h: '/endorsements' },
+      { l: 'News & press', h: '/news' },
     ],
   },
   {
-    title: "Get involved",
+    title: 'Get involved',
     links: [
-      { l: "Volunteer", h: "/volunteer" },
-      { l: "Donate", h: "/donate" },
-      { l: "Events", h: "/events" },
-      { l: "Contact", h: "/contact" },
+      { l: 'Volunteer', h: '/volunteer' },
+      { l: 'Donate', h: '/donate' },
+      { l: 'Events', h: '/events' },
+      { l: 'Contact', h: '/contact' },
     ],
   },
-];
+]
 
 const Footer = () => {
-  const ref = useRef(null);
+  const ref = useRef(null)
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    const el = ref.current
+    if (!el) return
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        ".footer-wordmark .split-char",
+        '.footer-wordmark .split-char',
         { yPercent: 110 },
         {
           yPercent: 0,
           duration: 1.2,
-          ease: "expo.out",
+          ease: 'expo.out',
           stagger: 0.04,
           scrollTrigger: {
             trigger: el,
-            start: "top 80%",
+            start: 'top 80%',
             once: true,
           },
-        }
-      );
-    }, ref);
-    return () => ctx.revert();
-  }, []);
+        },
+      )
+    }, ref)
+    return () => ctx.revert()
+  }, [])
 
-  const word = "ElectSmith.";
+  const word = 'ElectSmith.'
   return (
-    <footer
-      ref={ref}
-      className="relative isolate overflow-hidden bg-ink text-cream-100"
-    >
+    <footer ref={ref} className="relative isolate overflow-hidden bg-ink text-cream-100">
       <div className="dot-field pointer-events-none absolute inset-0 opacity-[0.06]" />
 
       <div className="relative mx-auto w-full max-w-[1280px] px-6 pt-24 pb-10 sm:px-10 md:px-16">
@@ -65,11 +62,11 @@ const Footer = () => {
         <div className="footer-wordmark overflow-hidden leading-none" aria-label={word}>
           <p
             className="font-display text-[clamp(3.5rem,14vw,12rem)] tracking-[-0.04em] text-cream-100"
-            style={{ overflow: "hidden", paddingBottom: "0.1em" }}
+            style={{ overflow: 'hidden', paddingBottom: '0.1em' }}
           >
             {[...word].map((c, i) => (
               <span key={i} className="split-char inline-block">
-                {c === " " ? " " : c}
+                {c === ' ' ? ' ' : c}
               </span>
             ))}
           </p>
@@ -92,8 +89,8 @@ const Footer = () => {
               </div>
             </Link>
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-cream-100/65">
-              An Oregon campaign for working families, climate dignity, and a
-              democracy that returns your call.
+              An Oregon campaign for working families, climate dignity, and a democracy that returns
+              your call.
             </p>
 
             <ul className="mt-8 flex flex-wrap gap-2">
@@ -174,13 +171,12 @@ const Footer = () => {
 
         <div className="mt-16 flex flex-col gap-4 border-t border-cream-100/15 pt-6 text-xs text-cream-100/55 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} {CANDIDATE.campaignName}.{" "}
+            © {new Date().getFullYear()} {CANDIDATE.campaignName}.{' '}
             <span className="opacity-70">All rights reserved.</span>
           </p>
           <p className="max-w-xl">
-            Paid for by {CANDIDATE.paidForBy}. FEC ID {CANDIDATE.fec}. Not
-            authorized by any candidate or candidate’s committee. Contributions
-            are not tax-deductible.
+            Paid for by {CANDIDATE.paidForBy}. FEC ID {CANDIDATE.fec}. Not authorized by any
+            candidate or candidate’s committee. Contributions are not tax-deductible.
           </p>
           <div className="flex gap-4">
             <Link href="/privacy" className="hover:text-mint-300">
@@ -196,7 +192,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

@@ -1,53 +1,53 @@
-"use client";
+'use client'
 
-import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
-import { motion, AnimatePresence } from "motion/react";
-import { cn } from "@/utils/cn";
+import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
+import { motion, AnimatePresence } from 'motion/react'
+import { cn } from '@/lib/cn'
 
 const NAV_LINKS = [
-  { label: "About", href: "/about" },
-  { label: "Issues", href: "/issues" },
-  { label: "Events", href: "/events" },
-  { label: "Endorsements", href: "/endorsements" },
-  { label: "News", href: "/news" },
-];
+  { label: 'About', href: '/about' },
+  { label: 'Issues', href: '/issues' },
+  { label: 'Events', href: '/events' },
+  { label: 'Endorsements', href: '/endorsements' },
+  { label: 'News', href: '/news' },
+]
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [hoverIdx, setHoverIdx] = useState(null);
+  const [scrolled, setScrolled] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [hoverIdx, setHoverIdx] = useState(null)
 
   // Track each link's bounding box for the sliding indicator
-  const navRef = useRef(null);
-  const linkRefs = useRef([]);
-  const [indicator, setIndicator] = useState({ left: 0, width: 0 });
+  const navRef = useRef(null)
+  const linkRefs = useRef([])
+  const [indicator, setIndicator] = useState({ left: 0, width: 0 })
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    document.body.style.overflow = open ? 'hidden' : ''
     return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
+      document.body.style.overflow = ''
+    }
+  }, [open])
 
   useEffect(() => {
-    if (hoverIdx === null || !navRef.current) return;
-    const el = linkRefs.current[hoverIdx];
-    if (!el) return;
-    const navBox = navRef.current.getBoundingClientRect();
-    const box = el.getBoundingClientRect();
+    if (hoverIdx === null || !navRef.current) return
+    const el = linkRefs.current[hoverIdx]
+    if (!el) return
+    const navBox = navRef.current.getBoundingClientRect()
+    const box = el.getBoundingClientRect()
     setIndicator({
       left: box.left - navBox.left,
       width: box.width,
-    });
-  }, [hoverIdx]);
+    })
+  }, [hoverIdx])
 
   return (
     <>
@@ -56,16 +56,16 @@ const Navbar = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-[padding] duration-500",
-          scrolled ? "py-3" : "py-5"
+          'fixed inset-x-0 top-0 z-50 transition-[padding] duration-500',
+          scrolled ? 'py-3' : 'py-5',
         )}
       >
         <div
           className={cn(
-            "pointer-events-none absolute inset-x-3 top-2 bottom-2 rounded-2xl border transition-all duration-500 sm:inset-x-6",
+            'pointer-events-none absolute inset-x-3 top-2 bottom-2 rounded-2xl border transition-all duration-500 sm:inset-x-6',
             scrolled
-              ? "border-plum-500/15 bg-paper/85 backdrop-blur-xl shadow-[0_10px_40px_-22px_rgba(116,69,119,0.35)]"
-              : "border-transparent bg-transparent"
+              ? 'border-plum-500/15 bg-paper/85 backdrop-blur-xl shadow-[0_10px_40px_-22px_rgb(var(--shadow-warm)_/_0.35)]'
+              : 'border-transparent bg-transparent',
           )}
         />
 
@@ -83,19 +83,17 @@ const Navbar = () => {
             <div className="flex flex-col leading-tight">
               <span
                 className={cn(
-                  "font-display text-lg tracking-tight transition-colors duration-300",
-                  open ? "text-cream-50" : "text-ink"
+                  'font-display text-lg tracking-tight transition-colors duration-300',
+                  open ? 'text-cream-50' : 'text-ink',
                 )}
               >
                 Elect
-                <span className={open ? "text-mint-300" : "text-plum-500"}>
-                  Smith
-                </span>
+                <span className={open ? 'text-mint-300' : 'text-plum-500'}>Smith</span>
               </span>
               <span
                 className={cn(
-                  "font-mono text-[10px] uppercase tracking-[0.3em] transition-colors duration-300",
-                  open ? "text-cream-200/70" : "text-ink/60"
+                  'font-mono text-[10px] uppercase tracking-[0.3em] transition-colors duration-300',
+                  open ? 'text-cream-200/70' : 'text-ink/60',
                 )}
               >
                 For Congress · 2026
@@ -117,7 +115,7 @@ const Navbar = () => {
                 width: indicator.width,
                 opacity: hoverIdx === null ? 0 : 1,
               }}
-              transition={{ type: "spring", stiffness: 380, damping: 32 }}
+              transition={{ type: 'spring', stiffness: 380, damping: 32 }}
               className="pointer-events-none absolute top-1/2 -translate-y-1/2 h-9 rounded-full bg-plum-500/10"
             />
 
@@ -132,10 +130,8 @@ const Navbar = () => {
                   {/* Leading dot */}
                   <span
                     className={cn(
-                      "h-1.5 w-1.5 rounded-full transition-all duration-500",
-                      hoverIdx === i
-                        ? "bg-plum-500 scale-100"
-                        : "bg-plum-500/0 scale-0"
+                      'h-1.5 w-1.5 rounded-full transition-all duration-500',
+                      hoverIdx === i ? 'bg-plum-500 scale-100' : 'bg-plum-500/0 scale-0',
                     )}
                   />
                   <span className="relative">
@@ -143,8 +139,8 @@ const Navbar = () => {
                     {/* Traced underline */}
                     <span
                       className={cn(
-                        "absolute -bottom-0.5 left-0 h-px bg-plum-500 transition-all duration-500",
-                        hoverIdx === i ? "w-full" : "w-0"
+                        'absolute -bottom-0.5 left-0 h-px bg-plum-500 transition-all duration-500',
+                        hoverIdx === i ? 'w-full' : 'w-0',
                       )}
                     />
                   </span>
@@ -167,11 +163,9 @@ const Navbar = () => {
             <Link
               href="/donate"
               className="cine-btn text-xs"
-              style={{ padding: "0.65rem 1.15rem 0.65rem 1.25rem" }}
+              style={{ padding: '0.65rem 1.15rem 0.65rem 1.25rem' }}
             >
-              <span className="relative z-10 inline-flex items-center gap-2">
-                Donate
-              </span>
+              <span className="relative z-10 inline-flex items-center gap-2">Donate</span>
               <span className="cine-arrow relative z-10" aria-hidden>
                 <svg viewBox="0 0 16 16" className="h-2.5 w-2.5" fill="none">
                   <path
@@ -193,26 +187,20 @@ const Navbar = () => {
             aria-label="Open menu"
             aria-expanded={open}
             className={cn(
-              "relative z-10 grid h-11 w-11 place-items-center rounded-full border backdrop-blur transition-colors duration-300 lg:hidden",
-              open
-                ? "border-cream-100/30 bg-plum-800/60"
-                : "border-plum-500/30 bg-paper/80"
+              'relative z-10 grid h-11 w-11 place-items-center rounded-full border backdrop-blur transition-colors duration-300 lg:hidden',
+              open ? 'border-cream-100/30 bg-plum-800/60' : 'border-plum-500/30 bg-paper/80',
             )}
           >
             <span
               className={cn(
-                "absolute h-px w-5 transition-all duration-500",
-                open
-                  ? "translate-y-0 rotate-45 bg-cream-50"
-                  : "-translate-y-1.5 bg-ink"
+                'absolute h-px w-5 transition-all duration-500',
+                open ? 'translate-y-0 rotate-45 bg-cream-50' : '-translate-y-1.5 bg-ink',
               )}
             />
             <span
               className={cn(
-                "absolute h-px w-5 transition-all duration-500",
-                open
-                  ? "translate-y-0 -rotate-45 bg-cream-50"
-                  : "translate-y-1.5 bg-ink"
+                'absolute h-px w-5 transition-all duration-500',
+                open ? 'translate-y-0 -rotate-45 bg-cream-50' : 'translate-y-1.5 bg-ink',
               )}
             />
           </button>
@@ -231,9 +219,9 @@ const Navbar = () => {
             className="fixed inset-0 z-40 lg:hidden"
           >
             <motion.div
-              initial={{ y: "-100%" }}
+              initial={{ y: '-100%' }}
               animate={{ y: 0 }}
-              exit={{ y: "-100%" }}
+              exit={{ y: '-100%' }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="relative h-full w-full bg-plum-900 px-6 pt-28 pb-12 text-cream-50"
             >
@@ -289,7 +277,7 @@ const Navbar = () => {
         )}
       </AnimatePresence>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

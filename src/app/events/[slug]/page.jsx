@@ -1,33 +1,32 @@
-import Link from "next/link";
-import Image from "next/image";
-import { notFound } from "next/navigation";
-import PageHero from "@/components/page-hero";
-import SectionFrame from "@/components/section-frame";
-import Arrow from "@/components/arrow";
-import CtaSection from "@/components/cta-section";
-import RsvpForm from "@/components/forms/rsvp-form";
-import { EVENTS, getEvent, getRelatedEvents } from "@/data/events";
+import Link from 'next/link'
+import Image from 'next/image'
+import { notFound } from 'next/navigation'
+import PageHero from '@/components/page-hero'
+import SectionFrame from '@/components/section-frame'
+import Arrow from '@/components/arrow'
+import CtaSection from '@/components/cta-section'
+import RsvpForm from '@/components/forms/rsvp-form'
+import { EVENTS, getEvent, getRelatedEvents } from '@/data/events'
 
-export const generateStaticParams = () =>
-  EVENTS.map((e) => ({ slug: e.slug }));
+export const generateStaticParams = () => EVENTS.map((e) => ({ slug: e.slug }))
 
 export const generateMetadata = async ({ params }) => {
-  const { slug } = await params;
-  const event = getEvent(slug);
-  if (!event) return {};
+  const { slug } = await params
+  const event = getEvent(slug)
+  if (!event) return {}
   return {
     title: event.title,
     description: event.blurb,
-  };
-};
+  }
+}
 
 const EventDetailPage = async ({ params }) => {
-  const { slug } = await params;
-  const event = getEvent(slug);
-  if (!event) notFound();
+  const { slug } = await params
+  const event = getEvent(slug)
+  if (!event) notFound()
 
-  const pct = Math.round((event.rsvp / event.capacity) * 100);
-  const related = getRelatedEvents(slug, 3);
+  const pct = Math.round((event.rsvp / event.capacity) * 100)
+  const related = getRelatedEvents(slug, 3)
 
   return (
     <>
@@ -36,8 +35,8 @@ const EventDetailPage = async ({ params }) => {
         title={event.title}
         intro={event.blurb}
         crumbs={[
-          { label: "Home", href: "/" },
-          { label: "Events", href: "/events" },
+          { label: 'Home', href: '/' },
+          { label: 'Events', href: '/events' },
           { label: event.title },
         ]}
         right={
@@ -60,7 +59,7 @@ const EventDetailPage = async ({ params }) => {
         <div className="mx-auto w-full max-w-[1280px] px-6 sm:px-10 md:px-16">
           <div
             data-reveal
-            className="relative aspect-[16/9] overflow-hidden rounded-[28px] border border-plum-500/15 shadow-[0_30px_60px_-30px_rgba(40,15,55,0.4)]"
+            className="relative aspect-[16/9] overflow-hidden rounded-[28px] border border-plum-500/15 shadow-[0_30px_60px_-30px_rgb(var(--shadow-warm)_/_0.4)]"
           >
             <Image
               src={event.image}
@@ -75,7 +74,7 @@ const EventDetailPage = async ({ params }) => {
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(180deg, transparent 50%, rgba(40,15,55,0.55) 100%)",
+                  'linear-gradient(180deg, transparent 50%, rgb(var(--shadow-warm)_/_0.55) 100%)',
               }}
             />
             <div className="absolute left-6 bottom-6 flex flex-wrap items-center gap-3 sm:left-8 sm:bottom-8">
@@ -102,17 +101,13 @@ const EventDetailPage = async ({ params }) => {
                 <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-plum-500">
                   Date
                 </p>
-                <p className="mt-2 font-display text-xl text-ink">
-                  {event.fullDate}
-                </p>
+                <p className="mt-2 font-display text-xl text-ink">{event.fullDate}</p>
               </li>
               <li className="rounded-2xl border border-plum-500/15 bg-paper p-5">
                 <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-plum-500">
                   Time
                 </p>
-                <p className="mt-2 font-display text-xl text-ink">
-                  {event.time}
-                </p>
+                <p className="mt-2 font-display text-xl text-ink">{event.time}</p>
                 <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.22em] text-ink/55">
                   {event.timezone}
                 </p>
@@ -121,9 +116,7 @@ const EventDetailPage = async ({ params }) => {
                 <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-plum-500">
                   Location
                 </p>
-                <p className="mt-2 font-display text-base leading-tight text-ink">
-                  {event.venue}
-                </p>
+                <p className="mt-2 font-display text-base leading-tight text-ink">{event.venue}</p>
                 <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.22em] text-ink/55">
                   {event.address}
                 </p>
@@ -152,7 +145,7 @@ const EventDetailPage = async ({ params }) => {
                     className="flex items-start gap-4 rounded-2xl border border-plum-500/15 bg-paper p-4"
                   >
                     <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-plum-500">
-                      {String(i + 1).padStart(2, "0")}
+                      {String(i + 1).padStart(2, '0')}
                     </span>
                     <p className="flex-1 text-base text-ink/85">{h}</p>
                   </li>
@@ -181,7 +174,10 @@ const EventDetailPage = async ({ params }) => {
           {/* Right — RSVP form (sticky on desktop) */}
           <aside className="md:col-span-5">
             <div className="md:sticky md:top-32">
-              <div data-reveal className="rounded-[28px] border border-plum-500/15 bg-paper p-7 sm:p-8 lg:p-10">
+              <div
+                data-reveal
+                className="rounded-[28px] border border-plum-500/15 bg-paper p-7 sm:p-8 lg:p-10"
+              >
                 <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-plum-500">
                   RSVP
                 </p>
@@ -189,8 +185,8 @@ const EventDetailPage = async ({ params }) => {
                   Reserve your seat.
                 </h2>
                 <p className="mt-2 text-sm text-ink/65">
-                  Free for everyone. We send a reminder with directions and
-                  accessibility notes the day before.
+                  Free for everyone. We send a reminder with directions and accessibility notes the
+                  day before.
                 </p>
                 <div className="mt-7">
                   <RsvpForm eventTitle={event.title} />
@@ -224,7 +220,7 @@ const EventDetailPage = async ({ params }) => {
                       className="absolute inset-0"
                       style={{
                         background:
-                          "linear-gradient(180deg, transparent 30%, rgba(40,15,55,0.65) 100%)",
+                          'linear-gradient(180deg, transparent 30%, rgb(var(--shadow-warm)_/_0.65) 100%)',
                       }}
                     />
                     <span className="absolute top-4 left-4 rounded-full border border-cream-100/30 bg-ink/35 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.25em] text-cream-100 backdrop-blur">
@@ -235,9 +231,7 @@ const EventDetailPage = async ({ params }) => {
                     <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-mint-300">
                       {r.fullDate}
                     </p>
-                    <h3 className="mt-3 font-display text-xl text-cream-50">
-                      {r.title}
-                    </h3>
+                    <h3 className="mt-3 font-display text-xl text-cream-50">{r.title}</h3>
                     <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.22em] text-cream-100/55">
                       {r.time} · {r.venue}
                     </p>
@@ -258,11 +252,11 @@ const EventDetailPage = async ({ params }) => {
       <CtaSection
         title="Can't make it? Stay in the loop."
         copy="Volunteer, donate, or just sign up for the weekly note from the trail."
-        primary={{ label: "Donate", href: "/donate" }}
-        secondary={{ label: "Volunteer", href: "/volunteer" }}
+        primary={{ label: 'Donate', href: '/donate' }}
+        secondary={{ label: 'Volunteer', href: '/volunteer' }}
       />
     </>
-  );
-};
+  )
+}
 
-export default EventDetailPage;
+export default EventDetailPage

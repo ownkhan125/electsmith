@@ -1,40 +1,39 @@
-"use client";
+'use client'
 
-import { motion } from "motion/react";
-import SectionFrame from "@/components/section-frame";
-import SplitText from "@/components/split-text";
+import { motion } from 'motion/react'
+import SectionFrame from '@/components/section-frame'
+import SplitText from '@/components/split-text'
 
 const QUOTES = [
   {
     quote:
-      "Jordan is the rare candidate who answers hard questions on the first call. We need that in Washington.",
-    name: "Mayor Lila Avina",
-    role: "Mayor of Hood River",
+      'Jordan is the rare candidate who answers hard questions on the first call. We need that in Washington.',
+    name: 'Mayor Lila Avina',
+    role: 'Mayor of Hood River',
   },
   {
     quote:
-      "I’ve worked across the aisle with Jordan for a decade. They keep their word, even when it costs them.",
-    name: "Rep. Marcus Tate (R)",
-    role: "OR State Legislature",
+      'I’ve worked across the aisle with Jordan for a decade. They keep their word, even when it costs them.',
+    name: 'Rep. Marcus Tate (R)',
+    role: 'OR State Legislature',
   },
   {
-    quote:
-      "From the picket line to the policy desk, Jordan stands with working people. Full stop.",
-    name: "Theresa Okoro",
-    role: "President, Oregon Labor Council",
+    quote: 'From the picket line to the policy desk, Jordan stands with working people. Full stop.',
+    name: 'Theresa Okoro',
+    role: 'President, Oregon Labor Council',
   },
-];
+]
 
 const SUPPORTERS = [
-  "Oregon Education Assoc.",
-  "Sierra Club Oregon",
-  "Planned Parenthood Advocates",
-  "Building Trades Council",
-  "Veterans for Civic Trust",
-  "OneOregon Climate",
-  "Latino Voters United",
-  "Lambda Equality NW",
-];
+  'Oregon Education Assoc.',
+  'Sierra Club Oregon',
+  'Planned Parenthood Advocates',
+  'Building Trades Council',
+  'Veterans for Civic Trust',
+  'OneOregon Climate',
+  'Latino Voters United',
+  'Lambda Equality NW',
+]
 
 const Endorsements = () => {
   return (
@@ -49,13 +48,9 @@ const Endorsements = () => {
             />
           </div>
           <div className="md:col-span-5">
-            <p
-              data-reveal
-              className="text-base leading-relaxed text-ink/70 sm:text-lg"
-            >
-              Teachers, nurses, firefighters, farmers, machinists, and a few
-              former opponents. No corporate PACs — only people whose names
-              fit on a school newsletter.
+            <p data-reveal className="text-base leading-relaxed text-ink/70 sm:text-lg">
+              Teachers, nurses, firefighters, farmers, machinists, and a few former opponents. No
+              corporate PACs — only people whose names fit on a school newsletter.
             </p>
           </div>
         </div>
@@ -67,7 +62,7 @@ const Endorsements = () => {
               key={q.name}
               data-reveal
               whileHover={{ y: -6, rotate: i % 2 === 0 ? -0.6 : 0.6 }}
-              transition={{ type: "spring", stiffness: 220, damping: 18 }}
+              transition={{ type: 'spring', stiffness: 220, damping: 18 }}
               className="group relative overflow-hidden rounded-3xl border border-plum-500/15 bg-paper p-7 sm:p-8"
             >
               <span className="absolute -top-6 left-6 font-display text-[8rem] leading-none text-plum-500/15 select-none">
@@ -78,7 +73,11 @@ const Endorsements = () => {
               </p>
               <div className="mt-8 flex items-center gap-3 border-t border-plum-500/15 pt-5">
                 <span className="grid h-10 w-10 place-items-center rounded-full bg-plum-500 font-display text-sm text-cream-50">
-                  {q.name.split(" ").map((p) => p[0]).slice(0, 2).join("")}
+                  {q.name
+                    .split(' ')
+                    .map((p) => p[0])
+                    .slice(0, 2)
+                    .join('')}
                 </span>
                 <div>
                   <p className="text-sm font-semibold text-ink">{q.name}</p>
@@ -109,7 +108,7 @@ const Endorsements = () => {
         </div>
       </div>
     </SectionFrame>
-  );
-};
+  )
+}
 
-export default Endorsements;
+export default Endorsements

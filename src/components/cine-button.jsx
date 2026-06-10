@@ -1,7 +1,8 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { cn } from "@/utils/cn";
+import Link from 'next/link'
+import PropTypes from 'prop-types'
+import { cn } from '@/lib/cn'
 
 /**
  * CineButton — premium CTA.
@@ -13,27 +14,21 @@ import { cn } from "@/utils/cn";
 const CineButton = ({
   href,
   onClick,
-  type = "button",
+  type = 'button',
   children,
-  variant = "primary",
-  size = "md",
-  className = "",
+  variant = 'primary',
+  size = 'md',
+  className = '',
   ariaLabel,
 }) => {
   const variantCls =
-    variant === "ghost"
-      ? "cine-btn--ghost"
-      : variant === "on-dark"
-      ? "cine-btn--on-dark"
-      : "";
+    variant === 'ghost' ? 'cine-btn--ghost' : variant === 'on-dark' ? 'cine-btn--on-dark' : ''
 
-  const sizeCls = size === "sm" ? "text-xs px-4 py-2.5" : "";
+  const sizeCls = size === 'sm' ? 'text-xs px-4 py-2.5' : ''
 
   const inner = (
     <>
-      <span className="relative z-10 inline-flex items-center gap-2.5">
-        {children}
-      </span>
+      <span className="relative z-10 inline-flex items-center gap-2.5">{children}</span>
       <span className="cine-arrow relative z-10" aria-hidden>
         <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none">
           <path
@@ -46,27 +41,33 @@ const CineButton = ({
         </svg>
       </span>
     </>
-  );
+  )
 
-  const cls = cn("cine-btn", variantCls, sizeCls, className);
+  const cls = cn('cine-btn', variantCls, sizeCls, className)
 
   if (href) {
     return (
       <Link href={href} aria-label={ariaLabel} className={cls}>
         {inner}
       </Link>
-    );
+    )
   }
   return (
-    <button
-      type={type}
-      onClick={onClick}
-      aria-label={ariaLabel}
-      className={cls}
-    >
+    <button type={type} onClick={onClick} aria-label={ariaLabel} className={cls}>
       {inner}
     </button>
-  );
-};
+  )
+}
 
-export default CineButton;
+CineButton.propTypes = {
+  href: PropTypes.string,
+  onClick: PropTypes.func,
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  children: PropTypes.node.isRequired,
+  variant: PropTypes.oneOf(['primary', 'ghost', 'on-dark']),
+  size: PropTypes.oneOf(['sm', 'md']),
+  className: PropTypes.string,
+  ariaLabel: PropTypes.string,
+}
+
+export default CineButton

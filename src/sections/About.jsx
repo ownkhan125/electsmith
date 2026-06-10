@@ -1,49 +1,49 @@
-"use client";
+'use client'
 
-import { useEffect, useRef } from "react";
-import { gsap, ScrollTrigger } from "@/animations/gsap-setup";
-import SectionFrame from "@/components/section-frame";
-import SplitText from "@/components/split-text";
-import CineButton from "@/components/cine-button";
+import { useEffect, useRef } from 'react'
+import { gsap, ScrollTrigger } from '@/lib/gsap-setup'
+import SectionFrame from '@/components/section-frame'
+import SplitText from '@/components/split-text'
+import CineButton from '@/components/cine-button'
 
 const VALUES = [
   {
-    k: "01",
-    t: "Public service",
-    d: "Twelve years in the classroom and four in the Navy taught me that progress starts with showing up.",
+    k: '01',
+    t: 'Public service',
+    d: 'Twelve years in the classroom and four in the Navy taught me that progress starts with showing up.',
   },
   {
-    k: "02",
-    t: "Independence",
-    d: "I answer to neighbors, not corporate PACs. Every dollar comes from people like you.",
+    k: '02',
+    t: 'Independence',
+    d: 'I answer to neighbors, not corporate PACs. Every dollar comes from people like you.',
   },
   {
-    k: "03",
-    t: "Transparency",
-    d: "Open calendars, town halls every month, and a real record of every vote — published in plain English.",
+    k: '03',
+    t: 'Transparency',
+    d: 'Open calendars, town halls every month, and a real record of every vote — published in plain English.',
   },
-];
+]
 
 const About = () => {
-  const portraitRef = useRef(null);
+  const portraitRef = useRef(null)
 
   useEffect(() => {
-    const el = portraitRef.current;
-    if (!el) return;
+    const el = portraitRef.current
+    if (!el) return
     const ctx = gsap.context(() => {
       gsap.to(el, {
         yPercent: -8,
-        ease: "none",
+        ease: 'none',
         scrollTrigger: {
           trigger: el,
-          start: "top bottom",
-          end: "bottom top",
+          start: 'top bottom',
+          end: 'bottom top',
           scrub: 1.2,
         },
-      });
-    });
-    return () => ctx.revert();
-  }, []);
+      })
+    })
+    return () => ctx.revert()
+  }, [])
 
   return (
     <SectionFrame id="about" eyebrow="About — Chapter 01">
@@ -59,7 +59,7 @@ const About = () => {
               className="absolute inset-0 mix-blend-multiply opacity-40"
               style={{
                 background:
-                  "repeating-linear-gradient(45deg, rgba(60,30,80,0.10) 0 2px, transparent 2px 7px)",
+                  'repeating-linear-gradient(45deg, color-mix(in oklab, var(--plum-700) 10%, transparent) 0 2px, transparent 2px 7px)',
               }}
             />
             <div className="absolute inset-0 grid place-items-center">
@@ -96,8 +96,8 @@ const About = () => {
             className="mt-6 rounded-2xl border border-plum-500/15 bg-paper-2/60 p-5"
           >
             <p className="font-display italic text-lg leading-snug text-ink">
-              “Politics shouldn’t feel like a spectator sport. It should feel
-              like a town meeting where every voice fits in the room.”
+              “Politics shouldn’t feel like a spectator sport. It should feel like a town meeting
+              where every voice fits in the room.”
             </p>
             <figcaption className="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-ink/60">
               — Jordan, kickoff rally
@@ -113,18 +113,19 @@ const About = () => {
             className="font-display text-[clamp(2rem,4.5vw,4rem)] font-light leading-[1.05] tracking-[-0.025em] text-ink"
           />
 
-          <div data-reveal className="mt-8 space-y-5 text-base leading-relaxed text-ink/75 sm:text-lg">
+          <div
+            data-reveal
+            className="mt-8 space-y-5 text-base leading-relaxed text-ink/75 sm:text-lg"
+          >
             <p>
-              I grew up watching my mom teach third grade and my dad fix
-              radiators in a shop he opened with a $4,000 SBA loan. We weren’t
-              wealthy, but we had public school, public libraries, and a public
-              health clinic that kept us going when things got hard.
+              I grew up watching my mom teach third grade and my dad fix radiators in a shop he
+              opened with a $4,000 SBA loan. We weren’t wealthy, but we had public school, public
+              libraries, and a public health clinic that kept us going when things got hard.
             </p>
             <p>
-              I’m running because too many of those guardrails are crumbling
-              while Washington bickers. I want to be the kind of representative
-              who returns phone calls, files real bills, and actually shows up
-              when the bridge to your neighborhood is closing.
+              I’m running because too many of those guardrails are crumbling while Washington
+              bickers. I want to be the kind of representative who returns phone calls, files real
+              bills, and actually shows up when the bridge to your neighborhood is closing.
             </p>
           </div>
 
@@ -154,7 +155,7 @@ const About = () => {
         </div>
       </div>
     </SectionFrame>
-  );
-};
+  )
+}
 
-export default About;
+export default About

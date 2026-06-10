@@ -1,6 +1,7 @@
-"use client";
+'use client'
 
-import { cn } from "@/utils/cn";
+import PropTypes from 'prop-types'
+import { cn } from '@/lib/cn'
 
 /**
  * FormField — accessible labeled input/textarea/select with consistent styling.
@@ -9,30 +10,28 @@ import { cn } from "@/utils/cn";
  *   plus all input props.
  */
 const baseInput =
-  "block w-full rounded-2xl border border-plum-500/15 bg-paper px-4 py-3 text-base text-ink placeholder:text-ink/35 transition-colors duration-300 focus:border-plum-500 focus:outline-none focus:ring-2 focus:ring-plum-500/20";
+  'block w-full rounded-2xl border border-plum-500/15 bg-paper px-4 py-3 text-base text-ink placeholder:text-ink/35 transition-colors duration-300 focus:border-plum-500 focus:outline-none focus:ring-2 focus:ring-plum-500/20'
 
 const FormField = ({
   label,
   id,
-  type = "text",
+  type = 'text',
   required = false,
-  error = "",
-  hint = "",
-  className = "",
-  inputClassName = "",
+  error = '',
+  hint = '',
+  className = '',
+  inputClassName = '',
   children,
   ...rest
 }) => {
-  const inputId = id || rest.name;
-  const describedBy = [
-    error ? `${inputId}-error` : null,
-    hint ? `${inputId}-hint` : null,
-  ]
-    .filter(Boolean)
-    .join(" ") || undefined;
+  const inputId = id || rest.name
+  const describedBy =
+    [error ? `${inputId}-error` : null, hint ? `${inputId}-hint` : null]
+      .filter(Boolean)
+      .join(' ') || undefined
 
   return (
-    <div className={cn("flex flex-col gap-2", className)}>
+    <div className={cn('flex flex-col gap-2', className)}>
       <label
         htmlFor={inputId}
         className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink/60"
@@ -43,7 +42,7 @@ const FormField = ({
 
       {children ? (
         children
-      ) : type === "textarea" ? (
+      ) : type === 'textarea' ? (
         <textarea
           id={inputId}
           required={required}
@@ -51,17 +50,17 @@ const FormField = ({
           aria-invalid={Boolean(error)}
           aria-describedby={describedBy}
           rows={5}
-          className={cn(baseInput, "resize-y min-h-[120px]", inputClassName)}
+          className={cn(baseInput, 'resize-y min-h-[120px]', inputClassName)}
           {...rest}
         />
-      ) : type === "select" ? (
+      ) : type === 'select' ? (
         <select
           id={inputId}
           required={required}
           aria-required={required}
           aria-invalid={Boolean(error)}
           aria-describedby={describedBy}
-          className={cn(baseInput, "appearance-none pr-10", inputClassName)}
+          className={cn(baseInput, 'appearance-none pr-10', inputClassName)}
           {...rest}
         />
       ) : (
@@ -95,7 +94,19 @@ const FormField = ({
         </p>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default FormField;
+FormField.propTypes = {
+  label: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  type: PropTypes.string,
+  required: PropTypes.bool,
+  error: PropTypes.string,
+  hint: PropTypes.string,
+  className: PropTypes.string,
+  inputClassName: PropTypes.string,
+  children: PropTypes.node,
+}
+
+export default FormField

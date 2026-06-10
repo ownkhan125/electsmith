@@ -1,22 +1,22 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import Link from "next/link";
-import { motion } from "motion/react";
-import SectionFrame from "@/components/section-frame";
-import SplitText from "@/components/split-text";
-import CineButton from "@/components/cine-button";
-import Arrow from "@/components/arrow";
-import { EVENTS } from "@/data/events";
+import { useState } from 'react'
+import Link from 'next/link'
+import { motion } from 'motion/react'
+import SectionFrame from '@/components/section-frame'
+import SplitText from '@/components/split-text'
+import CineButton from '@/components/cine-button'
+import Arrow from '@/components/arrow'
+import { EVENTS } from '@/data/events'
 
 const Events = () => {
-  const [hover, setHover] = useState(null);
+  const [hover, setHover] = useState(null)
 
   // Featured + first 4 upcoming
-  const featured = EVENTS[0];
-  const upcoming = EVENTS.slice(1, 5);
+  const featured = EVENTS[0]
+  const upcoming = EVENTS.slice(1, 5)
 
-  const rsvpPct = Math.round((featured.rsvp / featured.capacity) * 100);
+  const rsvpPct = Math.round((featured.rsvp / featured.capacity) * 100)
 
   return (
     <SectionFrame id="events" eyebrow="Events — Chapter 05" tone="paper">
@@ -47,21 +47,21 @@ const Events = () => {
         <article data-reveal className="col-span-12 md:col-span-7">
           <Link
             href={`/events/${featured.slug}`}
-            className="group relative block overflow-hidden rounded-[28px] border border-plum-500/15 bg-gradient-to-br from-plum-500 via-plum-700 to-plum-900 p-7 text-cream-50 shadow-[0_30px_60px_-30px_rgba(40,15,55,0.5)] transition-transform duration-500 hover:-translate-y-1 sm:p-10 md:p-12 lg:p-14"
+            className="group relative block overflow-hidden rounded-[28px] border border-plum-500/15 bg-gradient-to-br from-plum-500 via-plum-700 to-plum-900 p-7 text-cream-50 shadow-[0_30px_60px_-30px_rgb(var(--shadow-warm)_/_0.5)] transition-transform duration-500 hover:-translate-y-1 sm:p-10 md:p-12 lg:p-14"
           >
             <div
               aria-hidden
               className="absolute inset-0"
               style={{
                 background:
-                  "radial-gradient(120% 70% at 25% 20%, color-mix(in oklab, var(--mint-300) 50%, transparent) 0%, transparent 55%), radial-gradient(120% 80% at 90% 90%, color-mix(in oklab, var(--cream-200) 22%, transparent) 0%, transparent 60%)",
+                  'radial-gradient(120% 70% at 25% 20%, color-mix(in oklab, var(--mint-300) 50%, transparent) 0%, transparent 55%), radial-gradient(120% 80% at 90% 90%, color-mix(in oklab, var(--cream-200) 22%, transparent) 0%, transparent 60%)',
               }}
             />
             <span
               aria-hidden
               className="pointer-events-none absolute -right-8 -bottom-12 select-none font-display text-[22rem] leading-none text-cream-50/8"
             >
-              {featured.date.split(" ")[1]}
+              {featured.date.split(' ')[1]}
             </span>
 
             <div className="relative flex items-center gap-3">
@@ -80,10 +80,10 @@ const Events = () => {
                   {featured.weekday}
                 </p>
                 <p className="mt-2 font-display text-6xl leading-none sm:text-7xl">
-                  {featured.date.split(" ")[1]}
+                  {featured.date.split(' ')[1]}
                 </p>
                 <p className="mt-2 font-display text-xl italic text-mint-300">
-                  {featured.date.split(" ")[0]}
+                  {featured.date.split(' ')[0]}
                 </p>
               </div>
               <div className="min-w-0 flex-1">
@@ -141,7 +141,7 @@ const Events = () => {
                 Up next
               </p>
               <p className="font-display text-sm italic text-ink/60">
-                {String(upcoming.length).padStart(2, "0")} events
+                {String(upcoming.length).padStart(2, '0')} events
               </p>
             </div>
 
@@ -159,13 +159,13 @@ const Events = () => {
                   >
                     <div className="col-span-3">
                       <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-plum-500/70">
-                        {String(i + 2).padStart(2, "0")}
+                        {String(i + 2).padStart(2, '0')}
                       </p>
                       <p className="mt-1 font-display text-2xl leading-none text-ink sm:text-3xl">
-                        {e.date.split(" ")[1]}
+                        {e.date.split(' ')[1]}
                       </p>
                       <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-ink/55">
-                        {e.date.split(" ")[0]} · {e.weekday.slice(0, 3)}
+                        {e.date.split(' ')[0]} · {e.weekday.slice(0, 3)}
                       </p>
                     </div>
 
@@ -182,16 +182,14 @@ const Events = () => {
                       <Arrow
                         size="md"
                         className={`transition-colors duration-500 ${
-                          hover === i ? "text-plum-500" : "text-ink/45"
+                          hover === i ? 'text-plum-500' : 'text-ink/45'
                         }`}
                       />
                     </div>
 
                     <span
                       className={`pointer-events-none absolute -top-2 right-0 font-mono text-[9px] uppercase tracking-[0.3em] transition-all duration-500 ${
-                        hover === i
-                          ? "opacity-100 text-plum-500"
-                          : "-translate-y-1 opacity-0"
+                        hover === i ? 'opacity-100 text-plum-500' : '-translate-y-1 opacity-0'
                       }`}
                     >
                       {e.cat}
@@ -200,7 +198,7 @@ const Events = () => {
 
                   <span
                     className={`absolute bottom-0 left-0 h-px bg-plum-500 transition-all duration-700 ${
-                      hover === i ? "w-full" : "w-0"
+                      hover === i ? 'w-full' : 'w-0'
                     }`}
                   />
                 </motion.li>
@@ -224,7 +222,7 @@ const Events = () => {
         </aside>
       </div>
     </SectionFrame>
-  );
-};
+  )
+}
 
-export default Events;
+export default Events

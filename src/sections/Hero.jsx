@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import { useEffect, useRef } from "react";
-import Image from "next/image";
-import { gsap } from "@/animations/gsap-setup";
-import SplitText from "@/components/split-text";
-import CineButton from "@/components/cine-button";
-import HeroBackdrop from "@/components/hero-backdrop";
+import { useEffect, useRef } from 'react'
+import Image from 'next/image'
+import { gsap } from '@/lib/gsap-setup'
+import SplitText from '@/components/split-text'
+import CineButton from '@/components/cine-button'
+import HeroBackdrop from '@/components/hero-backdrop'
 
 /**
  * HERO IMAGE
@@ -18,72 +18,61 @@ import HeroBackdrop from "@/components/hero-backdrop";
  * optimize it the same way.
  */
 const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&auto=format&fit=crop&q=80";
+  'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&auto=format&fit=crop&q=80'
 
-const ISSUE_TAGS = [
-  "Healthcare",
-  "Education",
-  "Climate",
-  "Housing",
-  "Working families",
-];
+const ISSUE_TAGS = ['Healthcare', 'Education', 'Climate', 'Housing', 'Working families']
 
 const Hero = () => {
-  const scope = useRef(null);
+  const scope = useRef(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
       tl.fromTo(
-        ".hero-eyebrow",
+        '.hero-eyebrow',
         { opacity: 0, y: 10 },
-        { opacity: 1, y: 0, duration: 0.8, delay: 0.1 }
+        { opacity: 1, y: 0, duration: 0.8, delay: 0.1 },
       )
         .fromTo(
-          ".hero-line",
+          '.hero-line',
           { scaleX: 0 },
-          { scaleX: 1, duration: 0.9, ease: "expo.out" },
-          "-=0.4"
+          { scaleX: 1, duration: 0.9, ease: 'expo.out' },
+          '-=0.4',
         )
+        .fromTo('.hero-sub', { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.8 }, '+=0.2')
         .fromTo(
-          ".hero-sub",
-          { opacity: 0, y: 18 },
-          { opacity: 1, y: 0, duration: 0.8 },
-          "+=0.2"
-        )
-        .fromTo(
-          ".hero-cta",
+          '.hero-cta',
           { opacity: 0, y: 18 },
           { opacity: 1, y: 0, duration: 0.7, stagger: 0.1 },
-          "-=0.4"
+          '-=0.4',
         )
         .fromTo(
-          ".hero-image-card",
+          '.hero-image-card',
           { opacity: 0, y: 40, scale: 0.97 },
-          { opacity: 1, y: 0, scale: 1, duration: 1.1, ease: "power3.out" },
-          "-=0.95"
+          { opacity: 1, y: 0, scale: 1, duration: 1.1, ease: 'power3.out' },
+          '-=0.95',
         )
         .fromTo(
-          ".hero-stat",
+          '.hero-stat',
           { opacity: 0, y: 12 },
           { opacity: 1, y: 0, duration: 0.6, stagger: 0.07 },
-          "-=0.5"
-        );
+          '-=0.5',
+        )
 
       // Restrained parallax (no scrub on headlines — feels less twitchy)
-      gsap.to(".hero-image-card", {
+      gsap.to('.hero-image-card', {
         yPercent: -6,
-        ease: "none",
+        ease: 'none',
         scrollTrigger: {
           trigger: scope.current,
-          start: "top top",
-          end: "bottom top",
+          start: 'top top',
+          end: 'bottom top',
           scrub: 1.4,
         },
-      });
-    }, scope);
-    return () => ctx.revert();
-  }, []);
+      })
+    }, scope)
+    return () => ctx.revert()
+  }, [])
 
   return (
     <section
@@ -121,21 +110,16 @@ const Hero = () => {
             />
 
             <p className="hero-sub mt-8 max-w-xl text-base leading-relaxed text-ink/72 sm:text-lg">
-              <span className="font-semibold text-ink">Jordan Smith</span> is
-              running for Congress to put working families first, protect our
-              freedoms, and build an economy that lifts every household — not
-              just the wealthiest.
+              <span className="font-semibold text-ink">Jordan Smith</span> is running for Congress
+              to put working families first, protect our freedoms, and build an economy that lifts
+              every household — not just the wealthiest.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <CineButton href="/donate" className="hero-cta">
                 Donate to the campaign
               </CineButton>
-              <CineButton
-                href="/volunteer"
-                variant="ghost"
-                className="hero-cta"
-              >
+              <CineButton href="/volunteer" variant="ghost" className="hero-cta">
                 Join the campaign
               </CineButton>
             </div>
@@ -150,7 +134,7 @@ const Hero = () => {
           {/* Image column */}
           <div className="md:col-span-5">
             <div className="hero-image-card relative ml-auto w-full max-w-[480px] md:max-w-none">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] bg-plum-700 shadow-[0_30px_60px_-30px_rgba(40,15,55,0.45)] ring-1 ring-plum-500/15">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] bg-plum-700 shadow-[0_30px_60px_-30px_rgb(var(--shadow-warm)_/_0.45)] ring-1 ring-plum-500/15">
                 {/* Photo — Next/Image optimized */}
                 <Image
                   src={HERO_IMAGE}
@@ -167,7 +151,7 @@ const Hero = () => {
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(180deg, transparent 35%, rgba(40,15,55,0.45) 100%)",
+                      'linear-gradient(180deg, transparent 35%, rgb(var(--shadow-warm)_/_0.45) 100%)',
                   }}
                 />
                 <div
@@ -175,7 +159,7 @@ const Hero = () => {
                   className="absolute inset-0 mix-blend-overlay opacity-30"
                   style={{
                     background:
-                      "linear-gradient(180deg, color-mix(in oklab, var(--plum-500) 70%, transparent), transparent 60%)",
+                      'linear-gradient(180deg, color-mix(in oklab, var(--plum-500) 70%, transparent), transparent 60%)',
                   }}
                 />
 
@@ -203,8 +187,7 @@ const Hero = () => {
 
               {/* Quiet caption beneath the frame */}
               <p className="mt-4 max-w-[480px] font-mono text-[10px] uppercase tracking-[0.28em] text-ink/55">
-                Photographed in the Columbia River Gorge — the district we
-                represent.
+                Photographed in the Columbia River Gorge — the district we represent.
               </p>
             </div>
           </div>
@@ -213,19 +196,17 @@ const Hero = () => {
         {/* Stats — a calm horizontal strip beneath the composition */}
         <div className="mt-16 grid grid-cols-3 overflow-hidden rounded-2xl border border-plum-500/15 bg-paper-2/40 md:mt-20">
           {[
-            { k: "18,400", v: "Doors knocked" },
-            { k: "342", v: "Volunteers" },
-            { k: "31", v: "Town halls" },
+            { k: '18,400', v: 'Doors knocked' },
+            { k: '342', v: 'Volunteers' },
+            { k: '31', v: 'Town halls' },
           ].map((s, i) => (
             <div
               key={s.v}
               className={`hero-stat px-4 py-5 text-center sm:py-6 ${
-                i < 2 ? "border-r border-plum-500/15" : ""
+                i < 2 ? 'border-r border-plum-500/15' : ''
               }`}
             >
-              <p className="font-display text-2xl text-plum-500 sm:text-3xl">
-                {s.k}
-              </p>
+              <p className="font-display text-2xl text-plum-500 sm:text-3xl">{s.k}</p>
               <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.22em] text-ink/60">
                 {s.v}
               </p>
@@ -239,20 +220,15 @@ const Hero = () => {
             Priorities
           </span>
           {ISSUE_TAGS.map((t, i) => (
-            <span
-              key={t}
-              className="flex items-center gap-2 text-sm text-ink/75"
-            >
+            <span key={t} className="flex items-center gap-2 text-sm text-ink/75">
               <span className="font-display italic">{t}</span>
-              {i < ISSUE_TAGS.length - 1 && (
-                <span className="text-plum-500/60">·</span>
-              )}
+              {i < ISSUE_TAGS.length - 1 && <span className="text-plum-500/60">·</span>}
             </span>
           ))}
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

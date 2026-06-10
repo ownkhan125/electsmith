@@ -1,19 +1,19 @@
-import Link from "next/link";
-import Image from "next/image";
-import PageHero from "@/components/page-hero";
-import SectionFrame from "@/components/section-frame";
-import Arrow from "@/components/arrow";
-import CtaSection from "@/components/cta-section";
-import { NEWS } from "@/data/news";
+import Link from 'next/link'
+import Image from 'next/image'
+import PageHero from '@/components/page-hero'
+import SectionFrame from '@/components/section-frame'
+import Arrow from '@/components/arrow'
+import CtaSection from '@/components/cta-section'
+import { NEWS } from '@/data/news'
 
 export const metadata = {
-  title: "News & press",
+  title: 'News & press',
   description:
-    "Campaign announcements, endorsements, field updates, and press releases from the ElectSmith campaign.",
-};
+    'Campaign announcements, endorsements, field updates, and press releases from the ElectSmith campaign.',
+}
 
 const NewsPage = () => {
-  const [lead, ...rest] = NEWS;
+  const [lead, ...rest] = NEWS
 
   return (
     <>
@@ -21,7 +21,7 @@ const NewsPage = () => {
         eyebrow="News — Chapter 04"
         title="From the trail."
         intro="Press releases, endorsements, and notes from the field. Every week, in plain English."
-        crumbs={[{ label: "Home", href: "/" }, { label: "News" }]}
+        crumbs={[{ label: 'Home', href: '/' }, { label: 'News' }]}
       />
 
       {/* Lead story */}
@@ -29,7 +29,7 @@ const NewsPage = () => {
         <Link
           href={`/news/${lead.slug}`}
           data-reveal
-          className="group relative block overflow-hidden rounded-[28px] border border-plum-500/15 shadow-[0_30px_60px_-30px_rgba(40,15,55,0.4)]"
+          className="group relative block overflow-hidden rounded-[28px] border border-plum-500/15 shadow-[0_30px_60px_-30px_rgb(var(--shadow-warm)_/_0.4)]"
         >
           <div className="grid grid-cols-1 md:grid-cols-12">
             <div className="relative aspect-[16/10] md:col-span-7 md:aspect-auto md:min-h-[400px]">
@@ -51,9 +51,7 @@ const NewsPage = () => {
               <h2 className="mt-4 font-display text-2xl leading-tight text-ink sm:text-3xl md:text-4xl">
                 {lead.title}
               </h2>
-              <p className="mt-5 text-base leading-relaxed text-ink/72">
-                {lead.excerpt}
-              </p>
+              <p className="mt-5 text-base leading-relaxed text-ink/72">{lead.excerpt}</p>
               <div className="mt-8 flex items-center gap-3 text-ink/65 transition-colors group-hover:text-plum-500">
                 <span className="font-mono text-[10px] uppercase tracking-[0.28em]">
                   Read the article
@@ -90,9 +88,7 @@ const NewsPage = () => {
                   <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-plum-500">
                     {n.date} · {n.readMins} min
                   </p>
-                  <h3 className="mt-3 font-display text-xl leading-tight text-ink">
-                    {n.title}
-                  </h3>
+                  <h3 className="mt-3 font-display text-xl leading-tight text-ink">{n.title}</h3>
                   <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-ink/65">
                     {n.excerpt}
                   </p>
@@ -112,11 +108,11 @@ const NewsPage = () => {
       <CtaSection
         title="Press inquiry?"
         copy="Reach the press team directly — we respond within 24 hours."
-        primary={{ label: "Contact the team", href: "/contact" }}
+        primary={{ label: 'Contact the team', href: '/contact' }}
         secondary={null}
       />
     </>
-  );
-};
+  )
+}
 
-export default NewsPage;
+export default NewsPage

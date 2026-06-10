@@ -1,57 +1,56 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import FormField from "@/components/form-field";
-import CineButton from "@/components/cine-button";
+import { useState } from 'react'
+import FormField from '@/components/form-field'
+import CineButton from '@/components/cine-button'
 
-const EMAIL_RX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const EMAIL_RX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 const TOPICS = [
-  "General inquiry",
-  "Press request",
-  "Volunteer follow-up",
-  "Endorsement",
-  "Policy question",
-  "Other",
-];
+  'General inquiry',
+  'Press request',
+  'Volunteer follow-up',
+  'Endorsement',
+  'Policy question',
+  'Other',
+]
 
 const ContactForm = () => {
   const [data, setData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
+    firstName: '',
+    lastName: '',
+    email: '',
     topic: TOPICS[0],
-    message: "",
-  });
-  const [errors, setErrors] = useState({});
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+    message: '',
+  })
+  const [errors, setErrors] = useState({})
+  const [submitting, setSubmitting] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
 
-  const onChange = (k) => (e) =>
-    setData((p) => ({ ...p, [k]: e.target.value }));
+  const onChange = (k) => (e) => setData((p) => ({ ...p, [k]: e.target.value }))
 
   const validate = () => {
-    const e = {};
-    if (!data.firstName.trim()) e.firstName = "Required";
-    if (!data.lastName.trim()) e.lastName = "Required";
-    if (!data.email.trim()) e.email = "Required";
-    else if (!EMAIL_RX.test(data.email)) e.email = "Invalid email";
-    if (!data.message.trim()) e.message = "Required";
-    return e;
-  };
+    const e = {}
+    if (!data.firstName.trim()) e.firstName = 'Required'
+    if (!data.lastName.trim()) e.lastName = 'Required'
+    if (!data.email.trim()) e.email = 'Required'
+    else if (!EMAIL_RX.test(data.email)) e.email = 'Invalid email'
+    if (!data.message.trim()) e.message = 'Required'
+    return e
+  }
 
   const onSubmit = async (ev) => {
-    ev.preventDefault();
-    const e = validate();
-    setErrors(e);
-    if (Object.keys(e).length) return;
+    ev.preventDefault()
+    const e = validate()
+    setErrors(e)
+    if (Object.keys(e).length) return
 
-    setSubmitting(true);
+    setSubmitting(true)
     // Demo only — wire to API route in production
-    await new Promise((r) => setTimeout(r, 700));
-    setSubmitting(false);
-    setSubmitted(true);
-  };
+    await new Promise((r) => setTimeout(r, 700))
+    setSubmitting(false)
+    setSubmitted(true)
+  }
 
   if (submitted) {
     return (
@@ -66,7 +65,7 @@ const ContactForm = () => {
           A member of the campaign team will respond within two business days.
         </p>
       </div>
-    );
+    )
   }
 
   return (
@@ -77,7 +76,7 @@ const ContactForm = () => {
           name="firstName"
           required
           value={data.firstName}
-          onChange={onChange("firstName")}
+          onChange={onChange('firstName')}
           error={errors.firstName}
           autoComplete="given-name"
         />
@@ -86,7 +85,7 @@ const ContactForm = () => {
           name="lastName"
           required
           value={data.lastName}
-          onChange={onChange("lastName")}
+          onChange={onChange('lastName')}
           error={errors.lastName}
           autoComplete="family-name"
         />
@@ -97,7 +96,7 @@ const ContactForm = () => {
         type="email"
         required
         value={data.email}
-        onChange={onChange("email")}
+        onChange={onChange('email')}
         error={errors.email}
         autoComplete="email"
         placeholder="you@example.com"
@@ -107,13 +106,13 @@ const ContactForm = () => {
         name="topic"
         type="select"
         value={data.topic}
-        onChange={onChange("topic")}
+        onChange={onChange('topic')}
       >
         <select
           id="topic"
           name="topic"
           value={data.topic}
-          onChange={onChange("topic")}
+          onChange={onChange('topic')}
           className="block w-full rounded-2xl border border-plum-500/15 bg-paper px-4 py-3 text-base text-ink transition-colors duration-300 focus:border-plum-500 focus:outline-none focus:ring-2 focus:ring-plum-500/20"
         >
           {TOPICS.map((t) => (
@@ -127,7 +126,7 @@ const ContactForm = () => {
         type="textarea"
         required
         value={data.message}
-        onChange={onChange("message")}
+        onChange={onChange('message')}
         error={errors.message}
         placeholder="Tell us what's on your mind."
       />
@@ -137,11 +136,11 @@ const ContactForm = () => {
           We respond within 2 business days
         </p>
         <CineButton type="submit" onClick={() => {}}>
-          {submitting ? "Sending…" : "Send message"}
+          {submitting ? 'Sending…' : 'Send message'}
         </CineButton>
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default ContactForm;
+export default ContactForm

@@ -1,15 +1,15 @@
-import PageHero from "@/components/page-hero";
-import SectionFrame from "@/components/section-frame";
-import ContactForm from "@/components/forms/contact-form";
-import NewsletterForm from "@/components/forms/newsletter-form";
-import CtaSection from "@/components/cta-section";
-import { CANDIDATE } from "@/data/candidate";
+import PageHero from '@/components/page-hero'
+import SectionFrame from '@/components/section-frame'
+import ContactForm from '@/components/forms/contact-form'
+import NewsletterForm from '@/components/forms/newsletter-form'
+import CtaSection from '@/components/cta-section'
+import { CANDIDATE } from '@/data/candidate'
 
 export const metadata = {
-  title: "Contact",
+  title: 'Contact',
   description:
-    "Write the campaign — general inquiries, press, endorsements, or just to say hi. We respond within two business days.",
-};
+    'Write the campaign — general inquiries, press, endorsements, or just to say hi. We respond within two business days.',
+}
 
 const ContactPage = () => {
   return (
@@ -18,7 +18,7 @@ const ContactPage = () => {
         eyebrow="Contact — Get in touch"
         title="Write us. We'll write back."
         intro="Every email is read by a human. Press requests get a same-day response from the comms team."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
+        crumbs={[{ label: 'Home', href: '/' }, { label: 'Contact' }]}
       />
 
       <SectionFrame id="contact-form" eyebrow="Send a message">
@@ -33,9 +33,7 @@ const ContactPage = () => {
               <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-plum-500">
                 General
               </p>
-              <p className="mt-3 font-display text-xl text-ink">
-                Email the team
-              </p>
+              <p className="mt-3 font-display text-xl text-ink">Email the team</p>
               <a
                 href={`mailto:${CANDIDATE.email}`}
                 className="mt-2 inline-block text-sm text-ink/75 underline-offset-4 hover:text-plum-500 hover:underline"
@@ -47,9 +45,7 @@ const ContactPage = () => {
               <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-plum-500">
                 Press
               </p>
-              <p className="mt-3 font-display text-xl text-ink">
-                Media inquiries
-              </p>
+              <p className="mt-3 font-display text-xl text-ink">Media inquiries</p>
               <a
                 href={`mailto:${CANDIDATE.pressEmail}`}
                 className="mt-2 inline-block text-sm text-ink/75 underline-offset-4 hover:text-plum-500 hover:underline"
@@ -84,8 +80,8 @@ const ContactPage = () => {
               One email, every Friday.
             </h2>
             <p className="mt-3 max-w-md text-base text-cream-100/75">
-              Field updates, town hall recaps, and what we learned this week.
-              Unsubscribe in one click.
+              Field updates, town hall recaps, and what we learned this week. Unsubscribe in one
+              click.
             </p>
           </div>
           <div className="md:col-span-5 flex md:items-center" data-reveal>
@@ -97,11 +93,11 @@ const ContactPage = () => {
       <CtaSection
         title="Want to get involved instead?"
         copy="If you're ready to do more than send a message, we'd love your help."
-        primary={{ label: "Volunteer", href: "/volunteer" }}
-        secondary={{ label: "Donate", href: "/donate" }}
+        primary={{ label: 'Volunteer', href: '/volunteer' }}
+        secondary={{ label: 'Donate', href: '/donate' }}
       />
     </>
-  );
-};
+  )
+}
 
-export default ContactPage;
+export default ContactPage

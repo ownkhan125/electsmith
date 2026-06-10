@@ -1,8 +1,9 @@
-"use client";
+'use client'
 
-import SectionFrame from "@/components/section-frame";
-import SplitText from "@/components/split-text";
-import CineButton from "@/components/cine-button";
+import PropTypes from 'prop-types'
+import SectionFrame from '@/components/section-frame'
+import SplitText from '@/components/split-text'
+import CineButton from '@/components/cine-button'
 
 /**
  * CtaSection — closing CTA used at the bottom of inner pages.
@@ -10,11 +11,11 @@ import CineButton from "@/components/cine-button";
  * full functionality.
  */
 const CtaSection = ({
-  eyebrow = "Get involved — closing chapter",
-  title = "This campaign moves at the speed of you.",
-  copy = "Volunteer, donate, or just stay in touch. Every neighbor matters.",
-  primary = { label: "Donate", href: "/donate" },
-  secondary = { label: "Volunteer", href: "/volunteer" },
+  eyebrow = 'Get involved — closing chapter',
+  title = 'This campaign moves at the speed of you.',
+  copy = 'Volunteer, donate, or just stay in touch. Every neighbor matters.',
+  primary = { label: 'Donate', href: '/donate' },
+  secondary = { label: 'Volunteer', href: '/volunteer' },
 }) => {
   return (
     <SectionFrame id="cta" eyebrow={eyebrow} tone="plum">
@@ -32,10 +33,7 @@ const CtaSection = ({
             {copy}
           </p>
         </div>
-        <div
-          data-reveal
-          className="flex flex-wrap items-center gap-3 md:col-span-4 md:justify-end"
-        >
+        <div data-reveal className="flex flex-wrap items-center gap-3 md:col-span-4 md:justify-end">
           <CineButton href={primary.href} variant="on-dark">
             {primary.label}
           </CineButton>
@@ -47,7 +45,20 @@ const CtaSection = ({
         </div>
       </div>
     </SectionFrame>
-  );
-};
+  )
+}
 
-export default CtaSection;
+const ctaShape = PropTypes.shape({
+  label: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
+})
+
+CtaSection.propTypes = {
+  eyebrow: PropTypes.string,
+  title: PropTypes.string,
+  copy: PropTypes.string,
+  primary: ctaShape,
+  secondary: ctaShape,
+}
+
+export default CtaSection

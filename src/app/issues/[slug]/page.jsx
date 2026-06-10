@@ -1,31 +1,30 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import PageHero from "@/components/page-hero";
-import SectionFrame from "@/components/section-frame";
-import Arrow from "@/components/arrow";
-import CtaSection from "@/components/cta-section";
-import { ISSUES, getIssue } from "@/data/issues";
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
+import PageHero from '@/components/page-hero'
+import SectionFrame from '@/components/section-frame'
+import Arrow from '@/components/arrow'
+import CtaSection from '@/components/cta-section'
+import { ISSUES, getIssue } from '@/data/issues'
 
-export const generateStaticParams = () =>
-  ISSUES.map((i) => ({ slug: i.slug }));
+export const generateStaticParams = () => ISSUES.map((i) => ({ slug: i.slug }))
 
 export const generateMetadata = async ({ params }) => {
-  const { slug } = await params;
-  const issue = getIssue(slug);
-  if (!issue) return {};
+  const { slug } = await params
+  const issue = getIssue(slug)
+  if (!issue) return {}
   return {
     title: issue.title,
     description: issue.summary,
-  };
-};
+  }
+}
 
 const IssueDetailPage = async ({ params }) => {
-  const { slug } = await params;
-  const issue = getIssue(slug);
-  if (!issue) notFound();
+  const { slug } = await params
+  const issue = getIssue(slug)
+  if (!issue) notFound()
 
-  const idx = ISSUES.findIndex((i) => i.slug === slug);
-  const next = ISSUES[(idx + 1) % ISSUES.length];
+  const idx = ISSUES.findIndex((i) => i.slug === slug)
+  const next = ISSUES[(idx + 1) % ISSUES.length]
 
   return (
     <>
@@ -34,8 +33,8 @@ const IssueDetailPage = async ({ params }) => {
         title={issue.title}
         intro={issue.summary}
         crumbs={[
-          { label: "Home", href: "/" },
-          { label: "Issues", href: "/issues" },
+          { label: 'Home', href: '/' },
+          { label: 'Issues', href: '/issues' },
           { label: issue.tag },
         ]}
         right={
@@ -43,9 +42,7 @@ const IssueDetailPage = async ({ params }) => {
             <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-plum-500">
               Position
             </p>
-            <p className="mt-1 font-display text-2xl italic text-ink">
-              {issue.n}
-            </p>
+            <p className="mt-1 font-display text-2xl italic text-ink">{issue.n}</p>
             <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.22em] text-ink/55">
               of {ISSUES.length}
             </p>
@@ -79,7 +76,7 @@ const IssueDetailPage = async ({ params }) => {
               >
                 <div className="flex items-start gap-4">
                   <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-plum-500">
-                    {String(i + 1).padStart(2, "0")}
+                    {String(i + 1).padStart(2, '0')}
                   </span>
                   <p className="flex-1 text-base text-ink/85">{p}</p>
                 </div>
@@ -91,18 +88,11 @@ const IssueDetailPage = async ({ params }) => {
 
       {/* Bills */}
       <SectionFrame id="bills" eyebrow="Bills we'll co-sponsor" tone="ink">
-        <p
-          data-reveal
-          className="max-w-3xl text-base leading-relaxed text-cream-100/80 sm:text-lg"
-        >
-          A vote for this campaign is a vote for the bills below. We’ll
-          co-sponsor every one of them on day one and publish the floor-vote
-          schedule in plain English.
+        <p data-reveal className="max-w-3xl text-base leading-relaxed text-cream-100/80 sm:text-lg">
+          A vote for this campaign is a vote for the bills below. We’ll co-sponsor every one of them
+          on day one and publish the floor-vote schedule in plain English.
         </p>
-        <ul
-          data-reveal
-          className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
-        >
+        <ul data-reveal className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {issue.bills.map((b, i) => (
             <li
               key={b}
@@ -136,9 +126,7 @@ const IssueDetailPage = async ({ params }) => {
               </h3>
             </div>
             <div className="flex items-center gap-3 text-ink/65 transition-colors group-hover:text-plum-500">
-              <span className="font-mono text-[10px] uppercase tracking-[0.28em]">
-                Continue
-              </span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.28em]">Continue</span>
               <Arrow size="lg" />
             </div>
           </div>
@@ -148,11 +136,11 @@ const IssueDetailPage = async ({ params }) => {
       <CtaSection
         title="Care about this? Help us win it."
         copy="The fastest way to move policy is to win in November. Pick a way in."
-        primary={{ label: "Donate", href: "/donate" }}
-        secondary={{ label: "Volunteer", href: "/volunteer" }}
+        primary={{ label: 'Donate', href: '/donate' }}
+        secondary={{ label: 'Volunteer', href: '/volunteer' }}
       />
     </>
-  );
-};
+  )
+}
 
-export default IssueDetailPage;
+export default IssueDetailPage

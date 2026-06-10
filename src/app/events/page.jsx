@@ -1,19 +1,19 @@
-import Link from "next/link";
-import Image from "next/image";
-import PageHero from "@/components/page-hero";
-import SectionFrame from "@/components/section-frame";
-import Arrow from "@/components/arrow";
-import CtaSection from "@/components/cta-section";
-import { EVENTS } from "@/data/events";
+import Link from 'next/link'
+import Image from 'next/image'
+import PageHero from '@/components/page-hero'
+import SectionFrame from '@/components/section-frame'
+import Arrow from '@/components/arrow'
+import CtaSection from '@/components/cta-section'
+import { EVENTS } from '@/data/events'
 
 export const metadata = {
-  title: "Events",
+  title: 'Events',
   description:
     "Town halls, volunteer kickoffs, and meet-ups across Oregon's 3rd Congressional District. Every event is free, open, and on the calendar.",
-};
+}
 
 const EventsPage = () => {
-  const [featured, ...rest] = EVENTS;
+  const [featured, ...rest] = EVENTS
 
   return (
     <>
@@ -21,15 +21,13 @@ const EventsPage = () => {
         eyebrow="Events — Chapter 05"
         title="Come find me in the community."
         intro="Every event is free, open, and on the calendar. Bring questions — we'll bring chairs, coffee, and answers."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Events" }]}
+        crumbs={[{ label: 'Home', href: '/' }, { label: 'Events' }]}
         right={
           <div className="rounded-2xl border border-plum-500/15 bg-paper-2/40 px-5 py-4">
             <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-plum-500">
               On the calendar
             </p>
-            <p className="mt-1 font-display text-2xl italic text-ink">
-              {EVENTS.length}
-            </p>
+            <p className="mt-1 font-display text-2xl italic text-ink">{EVENTS.length}</p>
             <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.22em] text-ink/55">
               upcoming
             </p>
@@ -42,7 +40,7 @@ const EventsPage = () => {
         <Link
           href={`/events/${featured.slug}`}
           data-reveal
-          className="group relative block overflow-hidden rounded-[28px] border border-plum-500/15 shadow-[0_30px_60px_-30px_rgba(40,15,55,0.5)] transition-transform duration-500 hover:-translate-y-1"
+          className="group relative block overflow-hidden rounded-[28px] border border-plum-500/15 shadow-[0_30px_60px_-30px_rgb(var(--shadow-warm)_/_0.5)] transition-transform duration-500 hover:-translate-y-1"
         >
           <div className="relative grid grid-cols-1 md:grid-cols-12">
             <div className="relative aspect-[4/3] md:col-span-6 md:aspect-auto md:min-h-[420px]">
@@ -58,7 +56,7 @@ const EventsPage = () => {
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(180deg, transparent 50%, rgba(40,15,55,0.55) 100%)",
+                    'linear-gradient(180deg, transparent 50%, rgb(var(--shadow-warm)_/_0.55) 100%)',
                 }}
               />
               <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full border border-cream-100/25 bg-ink/35 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-cream-100 backdrop-blur">
@@ -112,19 +110,17 @@ const EventsPage = () => {
               >
                 <div className="col-span-3 sm:col-span-2">
                   <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-plum-500/70">
-                    {String(i + 2).padStart(2, "0")}
+                    {String(i + 2).padStart(2, '0')}
                   </p>
                   <p className="mt-1 font-display text-3xl leading-none text-ink sm:text-4xl">
-                    {e.date.split(" ")[1]}
+                    {e.date.split(' ')[1]}
                   </p>
                   <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-ink/55">
-                    {e.date.split(" ")[0]} · {e.weekday}
+                    {e.date.split(' ')[0]} · {e.weekday}
                   </p>
                 </div>
                 <div className="col-span-7 sm:col-span-7 min-w-0">
-                  <p className="truncate font-display text-base text-ink sm:text-xl">
-                    {e.title}
-                  </p>
+                  <p className="truncate font-display text-base text-ink sm:text-xl">{e.title}</p>
                   <p className="mt-1 truncate font-mono text-[10px] uppercase tracking-[0.2em] text-ink/55 sm:text-[11px]">
                     {e.time} · {e.venue}
                   </p>
@@ -148,11 +144,11 @@ const EventsPage = () => {
       <CtaSection
         title="Host an event at home."
         copy="House parties are the backbone of this campaign. Pick a date — we'll bring the snacks."
-        primary={{ label: "Get in touch", href: "/contact" }}
-        secondary={{ label: "Volunteer", href: "/volunteer" }}
+        primary={{ label: 'Get in touch', href: '/contact' }}
+        secondary={{ label: 'Volunteer', href: '/volunteer' }}
       />
     </>
-  );
-};
+  )
+}
 
-export default EventsPage;
+export default EventsPage

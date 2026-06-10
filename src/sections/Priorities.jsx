@@ -1,57 +1,51 @@
-"use client";
+'use client'
 
-import { useEffect, useRef, useState } from "react";
-import { motion } from "motion/react";
-import SectionFrame from "@/components/section-frame";
-import SplitText from "@/components/split-text";
+import { useEffect, useRef, useState } from 'react'
+import { motion } from 'motion/react'
+import SectionFrame from '@/components/section-frame'
+import SplitText from '@/components/split-text'
 
 const ISSUES = [
   {
-    n: "I",
-    title: "Healthcare you can actually use",
-    body:
-      "Cap prescription costs, expand mental health coverage, and protect Medicare from privatization. Every family deserves care without a coin-flip about rent.",
-    tag: "Health",
+    n: 'I',
+    title: 'Healthcare you can actually use',
+    body: 'Cap prescription costs, expand mental health coverage, and protect Medicare from privatization. Every family deserves care without a coin-flip about rent.',
+    tag: 'Health',
   },
   {
-    n: "II",
-    title: "Schools that prepare every kid",
-    body:
-      "Fully fund Title I, raise teacher pay to a living wage, and bring trade & technical pathways back to high schools across the district.",
-    tag: "Education",
+    n: 'II',
+    title: 'Schools that prepare every kid',
+    body: 'Fully fund Title I, raise teacher pay to a living wage, and bring trade & technical pathways back to high schools across the district.',
+    tag: 'Education',
   },
   {
-    n: "III",
-    title: "A climate plan with jobs attached",
-    body:
-      "Invest in clean-energy manufacturing, rural transmission, and wildfire resilience — built by union labor right here in Oregon.",
-    tag: "Climate",
+    n: 'III',
+    title: 'A climate plan with jobs attached',
+    body: 'Invest in clean-energy manufacturing, rural transmission, and wildfire resilience — built by union labor right here in Oregon.',
+    tag: 'Climate',
   },
   {
-    n: "IV",
-    title: "Housing as a right, not a roulette",
-    body:
-      "Tax-credit incentives for missing-middle housing, support for first-time buyers, and a federal floor on tenant protections.",
-    tag: "Housing",
+    n: 'IV',
+    title: 'Housing as a right, not a roulette',
+    body: 'Tax-credit incentives for missing-middle housing, support for first-time buyers, and a federal floor on tenant protections.',
+    tag: 'Housing',
   },
   {
-    n: "V",
-    title: "Defending our freedoms",
-    body:
-      "Codify reproductive rights, protect voting access, and stand up for LGBTQ+ Oregonians without compromise.",
-    tag: "Rights",
+    n: 'V',
+    title: 'Defending our freedoms',
+    body: 'Codify reproductive rights, protect voting access, and stand up for LGBTQ+ Oregonians without compromise.',
+    tag: 'Rights',
   },
   {
-    n: "VI",
-    title: "A democracy worthy of your time",
-    body:
-      "Ban congressional stock trades, end gerrymandering with independent commissions, and bring transparency to every floor vote.",
-    tag: "Reform",
+    n: 'VI',
+    title: 'A democracy worthy of your time',
+    body: 'Ban congressional stock trades, end gerrymandering with independent commissions, and bring transparency to every floor vote.',
+    tag: 'Reform',
   },
-];
+]
 
 const Priorities = () => {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(0)
 
   return (
     <SectionFrame id="priorities" eyebrow="Priorities — Chapter 02" tone="ink">
@@ -68,8 +62,8 @@ const Priorities = () => {
               data-reveal
               className="mt-6 max-w-md text-base leading-relaxed text-cream-100/70 sm:text-lg"
             >
-              These aren’t talking points — they’re the bills I’ll introduce in
-              my first session, paired with the floor votes I’ll demand.
+              These aren’t talking points — they’re the bills I’ll introduce in my first session,
+              paired with the floor votes I’ll demand.
             </p>
 
             {/* Tag pills */}
@@ -82,8 +76,8 @@ const Priorities = () => {
                   onClick={() => setActive(idx)}
                   className={`rounded-full border px-4 py-1.5 text-xs font-mono uppercase tracking-[0.2em] transition-all duration-300 ${
                     active === idx
-                      ? "border-mint-300 bg-mint-300 text-ink"
-                      : "border-cream-100/20 text-cream-100/70 hover:border-cream-100/50"
+                      ? 'border-mint-300 bg-mint-300 text-ink'
+                      : 'border-cream-100/20 text-cream-100/70 hover:border-cream-100/50'
                   }`}
                 >
                   {i.tag}
@@ -102,17 +96,17 @@ const Priorities = () => {
                 data-reveal
                 onMouseEnter={() => setActive(idx)}
                 whileHover={{ y: -4 }}
-                transition={{ type: "spring", stiffness: 280, damping: 22 }}
+                transition={{ type: 'spring', stiffness: 280, damping: 22 }}
                 className={`group relative overflow-hidden rounded-3xl border p-7 transition-colors duration-500 sm:p-8 ${
                   active === idx
-                    ? "border-mint-300/50 bg-plum-700/60"
-                    : "border-cream-100/10 bg-plum-800/40"
+                    ? 'border-mint-300/50 bg-plum-700/60'
+                    : 'border-cream-100/10 bg-plum-800/40'
                 }`}
               >
                 {/* Hover gradient bar */}
                 <span
                   className={`absolute left-0 top-0 h-full w-1 origin-top scale-y-0 bg-gradient-to-b from-mint-300 via-sage-300 to-cream-200 transition-transform duration-700 ${
-                    active === idx ? "scale-y-100" : ""
+                    active === idx ? 'scale-y-100' : ''
                   }`}
                 />
                 <div className="flex items-start gap-6">
@@ -121,9 +115,7 @@ const Priorities = () => {
                   </span>
                   <div className="flex-1">
                     <div className="flex items-center justify-between gap-3">
-                      <h3 className="font-display text-xl text-cream-50 sm:text-2xl">
-                        {it.title}
-                      </h3>
+                      <h3 className="font-display text-xl text-cream-50 sm:text-2xl">{it.title}</h3>
                       <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-cream-100/55">
                         {it.tag}
                       </span>
@@ -154,7 +146,7 @@ const Priorities = () => {
         </div>
       </div>
     </SectionFrame>
-  );
-};
+  )
+}
 
-export default Priorities;
+export default Priorities

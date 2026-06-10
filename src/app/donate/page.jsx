@@ -1,26 +1,26 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import PageHero from "@/components/page-hero";
-import SectionFrame from "@/components/section-frame";
-import CineButton from "@/components/cine-button";
-import FormField from "@/components/form-field";
-import CtaSection from "@/components/cta-section";
+import { useState } from 'react'
+import PageHero from '@/components/page-hero'
+import SectionFrame from '@/components/section-frame'
+import CineButton from '@/components/cine-button'
+import FormField from '@/components/form-field'
+import CtaSection from '@/components/cta-section'
 
-const AMOUNTS = [25, 50, 100, 250, 500, 1000];
+const AMOUNTS = [25, 50, 100, 250, 500, 1000]
 
 const DonatePage = () => {
-  const [amount, setAmount] = useState(50);
-  const [custom, setCustom] = useState("");
-  const [recurring, setRecurring] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const finalAmount = custom ? Number(custom) || 0 : amount;
+  const [amount, setAmount] = useState(50)
+  const [custom, setCustom] = useState('')
+  const [recurring, setRecurring] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const finalAmount = custom ? Number(custom) || 0 : amount
 
   const onSubmit = (e) => {
-    e.preventDefault();
-    if (finalAmount < 1) return;
-    setSubmitted(true);
-  };
+    e.preventDefault()
+    if (finalAmount < 1) return
+    setSubmitted(true)
+  }
 
   return (
     <>
@@ -28,7 +28,7 @@ const DonatePage = () => {
         eyebrow="Donate — For your dollar"
         title="No corporate PACs. No dark money."
         intro="Every dollar funds field staff, town halls, and the literature we hand out at the door. The maximum federal contribution per individual is $3,300 per election."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Donate" }]}
+        crumbs={[{ label: 'Home', href: '/' }, { label: 'Donate' }]}
       />
 
       <SectionFrame id="donate" eyebrow="Choose an amount">
@@ -38,33 +38,31 @@ const DonatePage = () => {
             <ul data-reveal className="flex flex-col gap-3">
               {[
                 {
-                  k: "$25",
-                  v: "Funds yard signs for an entire precinct",
+                  k: '$25',
+                  v: 'Funds yard signs for an entire precinct',
                 },
                 {
-                  k: "$50",
-                  v: "Pays for one canvass shift’s supplies",
+                  k: '$50',
+                  v: 'Pays for one canvass shift’s supplies',
                 },
                 {
-                  k: "$100",
-                  v: "Covers a small-town town hall venue",
+                  k: '$100',
+                  v: 'Covers a small-town town hall venue',
                 },
                 {
-                  k: "$250",
-                  v: "Sponsors one week of a field organizer’s coffee",
+                  k: '$250',
+                  v: 'Sponsors one week of a field organizer’s coffee',
                 },
                 {
-                  k: "$500+",
-                  v: "Helps train a precinct captain for the cycle",
+                  k: '$500+',
+                  v: 'Helps train a precinct captain for the cycle',
                 },
               ].map((row) => (
                 <li
                   key={row.k}
                   className="flex items-baseline justify-between gap-4 border-b border-plum-500/15 pb-3"
                 >
-                  <span className="font-display text-2xl text-plum-500">
-                    {row.k}
-                  </span>
+                  <span className="font-display text-2xl text-plum-500">{row.k}</span>
                   <span className="text-right text-sm text-ink/70">{row.v}</span>
                 </li>
               ))}
@@ -74,10 +72,9 @@ const DonatePage = () => {
               data-reveal
               className="mt-10 rounded-2xl border border-plum-500/15 bg-paper-2/40 p-5 text-sm leading-relaxed text-ink/75"
             >
-              <span className="font-semibold text-ink">Required by law:</span>{" "}
-              Contributions are not tax-deductible. Federal law limits
-              contributions to $3,300 per individual per election. Foreign
-              nationals and federal contractors are prohibited from donating.
+              <span className="font-semibold text-ink">Required by law:</span> Contributions are not
+              tax-deductible. Federal law limits contributions to $3,300 per individual per
+              election. Foreign nationals and federal contractors are prohibited from donating.
             </p>
           </div>
 
@@ -94,11 +91,10 @@ const DonatePage = () => {
                     Thank you
                   </p>
                   <p className="mt-3 font-display text-2xl text-ink sm:text-3xl">
-                    ${finalAmount} {recurring ? "/ month" : ""} — received.
+                    ${finalAmount} {recurring ? '/ month' : ''} — received.
                   </p>
                   <p className="mt-2 text-sm text-ink/65">
-                    Your receipt and FEC disclosure are on the way to your
-                    inbox.
+                    Your receipt and FEC disclosure are on the way to your inbox.
                   </p>
                 </div>
               ) : (
@@ -108,24 +104,24 @@ const DonatePage = () => {
                   </p>
                   <div className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-6">
                     {AMOUNTS.map((a) => {
-                      const active = !custom && amount === a;
+                      const active = !custom && amount === a
                       return (
                         <button
                           key={a}
                           type="button"
                           onClick={() => {
-                            setAmount(a);
-                            setCustom("");
+                            setAmount(a)
+                            setCustom('')
                           }}
                           className={`rounded-2xl border px-2 py-4 font-display text-lg transition-all duration-300 ${
                             active
-                              ? "border-plum-500 bg-plum-500 text-cream-50"
-                              : "border-plum-500/20 text-ink hover:border-plum-500/50"
+                              ? 'border-plum-500 bg-plum-500 text-cream-50'
+                              : 'border-plum-500/20 text-ink hover:border-plum-500/50'
                           }`}
                         >
                           ${a}
                         </button>
-                      );
+                      )
                     })}
                   </div>
 
@@ -151,8 +147,7 @@ const DonatePage = () => {
                       className="h-5 w-5 accent-plum-500"
                     />
                     <span className="text-sm text-ink">
-                      Make this a{" "}
-                      <span className="font-semibold">monthly</span> donation
+                      Make this a <span className="font-semibold">monthly</span> donation
                     </span>
                   </label>
 
@@ -164,9 +159,25 @@ const DonatePage = () => {
                       <FormField label="First name" name="firstName" required />
                       <FormField label="Last name" name="lastName" required />
                       <FormField label="Email" name="email" type="email" required />
-                      <FormField label="ZIP code" name="zip" required inputMode="numeric" maxLength={5} />
-                      <FormField label="Employer" name="employer" required hint="Required by federal law" />
-                      <FormField label="Occupation" name="occupation" required hint="Required by federal law" />
+                      <FormField
+                        label="ZIP code"
+                        name="zip"
+                        required
+                        inputMode="numeric"
+                        maxLength={5}
+                      />
+                      <FormField
+                        label="Employer"
+                        name="employer"
+                        required
+                        hint="Required by federal law"
+                      />
+                      <FormField
+                        label="Occupation"
+                        name="occupation"
+                        required
+                        hint="Required by federal law"
+                      />
                     </div>
                   </div>
 
@@ -176,7 +187,7 @@ const DonatePage = () => {
                     </p>
                     <CineButton type="submit" onClick={() => {}}>
                       Donate ${finalAmount}
-                      {recurring ? " / mo" : ""}
+                      {recurring ? ' / mo' : ''}
                     </CineButton>
                   </div>
                 </>
@@ -189,11 +200,11 @@ const DonatePage = () => {
       <CtaSection
         title="Can't donate today?"
         copy="Volunteering, hosting a meet-up, or sharing the campaign are all just as valuable."
-        primary={{ label: "Volunteer", href: "/volunteer" }}
-        secondary={{ label: "Get in touch", href: "/contact" }}
+        primary={{ label: 'Volunteer', href: '/volunteer' }}
+        secondary={{ label: 'Get in touch', href: '/contact' }}
       />
     </>
-  );
-};
+  )
+}
 
-export default DonatePage;
+export default DonatePage
