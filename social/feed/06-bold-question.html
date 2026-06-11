@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Feed 06 · Bold Question</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Inter+Tight:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --plum:#744577; --plum-700:#482a4b; --plum-800:#321e34; --plum-900:#1c1020; --cream-50:#fdfaeb; --cream-200:#f0e9b6; --mint:#84c5b1; --ink:#0e0712; }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html,body { background:#ece9e4; min-height:100vh; }
+  body { display:grid; place-items:center; padding:32px; font-family:'Inter Tight',system-ui,sans-serif; }
+  .canvas { width:1080px; height:1080px; position:relative; overflow:hidden;
+    background: var(--plum-800); color: var(--cream-50);
+    transform:scale(min(1, calc((100vw - 64px)/1080), calc((100vh - 64px)/1080))); transform-origin:center;
+    border-radius:4px; box-shadow:0 60px 120px -40px rgba(40,15,55,0.55);
+  }
+  .dot-field { position:absolute; inset:0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(132,197,177,.35) 1px, transparent 0);
+    background-size: 32px 32px; opacity:.4;
+    mask-image: radial-gradient(ellipse 60% 60% at 70% 50%, black 0%, transparent 100%); }
+  .corner-tag {
+    position:absolute; top:80px; left:80px;
+    display:inline-flex; align-items:center; gap:14px;
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.32em; text-transform:uppercase; color: rgba(253,250,235,.8);
+  }
+  .corner-tag::before { content:''; width:60px; height:1px; background: var(--mint); }
+  .index { position:absolute; top:80px; right:80px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.32em; text-transform:uppercase; color: rgba(253,250,235,.45); }
+  .question {
+    position:absolute; top: 200px; left: 80px; right: 80px;
+    font-family:'Fraunces',serif; font-weight:300; font-size: 168px; line-height:.96; letter-spacing:-0.045em;
+    color: var(--cream-50);
+  }
+  .question em { font-style:italic; color: var(--mint); }
+  .question .underline { background-image: linear-gradient(var(--mint), var(--mint));
+    background-size: 100% 4px; background-repeat: no-repeat; background-position: 0 95%; padding-bottom:4px; }
+
+  /* answer hint */
+  .answer {
+    position:absolute; bottom: 250px; left:80px; right:80px;
+    font-family:'Fraunces',serif; font-style:italic; font-weight:300; font-size: 36px; line-height:1.3; color: rgba(253,250,235,.78);
+    max-width: 720px;
+  }
+  /* big number marker */
+  .big-six {
+    position:absolute; top: 80px; right: 60%;
+    font-family:'Fraunces',serif; font-style:italic; font-weight:300;
+    font-size: 600px; line-height:1; color: var(--plum); opacity:.4;
+    user-select:none;
+  }
+  /* footer */
+  .footer {
+    position:absolute; bottom:80px; left:80px; right:80px;
+    display:flex; align-items:flex-end; justify-content:space-between;
+    padding-top:24px; border-top:1px solid rgba(253,250,235,.18);
+  }
+  .footer .cta {
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.36em; text-transform:uppercase;
+    color: var(--cream-50); padding-bottom: 2px; border-bottom: 1px solid var(--mint);
+  }
+  .footer .brand { font-family:'Fraunces',serif; font-size:24px; color: var(--cream-50); }
+  .footer .brand em { color: var(--mint); font-style:normal; }
+  .footer .handle { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.32em; text-transform:uppercase; color: rgba(253,250,235,.4); }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="dot-field"></div>
+    <div class="big-six">?</div>
+
+    <span class="corner-tag">A question for you</span>
+    <span class="index">06 / 10</span>
+
+    <h1 class="question">Quod<br><em>erit</em><br><span class="underline">demonstrandum?</span></h1>
+
+    <p class="answer">Lorem ipsum dolor sit amet, consectetur adipiscing — sed do eiusmod tempor incididunt ut labore.</p>
+
+    <div class="footer">
+      <span class="cta">Tap to discover →</span>
+      <span class="brand">Elect<em>Smith</em></span>
+      <span class="handle">@electsmith</span>
+    </div>
+  </div>
+</body>
+</html>

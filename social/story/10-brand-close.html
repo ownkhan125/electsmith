@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Story 10 · Brand Close</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter+Tight:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --plum:#744577; --plum-700:#482a4b; --plum-900:#1c1020; --cream-50:#fdfaeb; --cream-200:#f0e9b6; --cream-300:#e5dc94; --mint:#84c5b1; --sage:#accfa3; --ink:#0e0712; --paper:#faf6e9; }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html,body { background:#ece9e4; min-height:100vh; }
+  body { display:grid; place-items:center; padding:24px; font-family:'Inter Tight',system-ui,sans-serif; }
+  .canvas { width:1080px; height:1920px; position:relative; overflow:hidden;
+    background:
+      radial-gradient(60% 40% at 70% 10%, rgba(132,197,177,.35), transparent 70%),
+      radial-gradient(60% 50% at 0% 100%, rgba(229,220,148,.55), transparent 70%),
+      var(--paper);
+    color: var(--ink);
+    transform: scale(min(1, calc((100vw - 48px)/1080), calc((100vh - 48px)/1920))); transform-origin: center;
+    border-radius:6px; box-shadow:0 60px 120px -40px rgba(40,15,55,0.5);
+  }
+  .grain { position:absolute; inset:0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(40,15,55,0.05) 1px, transparent 0);
+    background-size: 4px 4px; opacity:.45; mix-blend-mode:multiply; pointer-events:none; }
+  /* corners */
+  .corner { position:absolute; width:48px; height:48px; border:1px solid var(--plum); opacity:.5; }
+  .corner.tl { top:80px; left:80px; border-right:none; border-bottom:none; }
+  .corner.tr { top:80px; right:80px; border-left:none; border-bottom:none; }
+  .corner.bl { bottom:80px; left:80px; border-right:none; border-top:none; }
+  .corner.br { bottom:80px; right:80px; border-left:none; border-top:none; }
+
+  /* meta strip top */
+  .meta-top { position:absolute; top:200px; left:0; right:0; text-align:center;
+    font-family:'JetBrains Mono',monospace; font-size:20px; letter-spacing:.5em; text-transform:uppercase; color: var(--plum-700);
+  }
+  .meta-top span { padding: 0 24px; position:relative; }
+  .meta-top span:not(:last-child)::after { content:'·'; position:absolute; right:-2px; color: var(--plum); }
+
+  /* mega wordmark stacked */
+  .wordmark {
+    position:absolute; top: 360px; left:0; right:0; text-align:center;
+    font-family:'Fraunces',serif; font-weight:300; font-size: 260px; line-height: .94; letter-spacing:-0.05em; color: var(--ink);
+  }
+  .wordmark em { font-style:italic; color: var(--plum); }
+
+  /* tagline rule — sits well below the two-line wordmark */
+  .tagline-row { position:absolute; top: 1060px; left:120px; right:120px;
+    display:flex; align-items:center; gap: 22px;
+  }
+  .tagline-row .rule { flex:1; height:1px; background: rgba(40,15,55,.25); }
+  .tagline-row .tag { font-family:'Fraunces',serif; font-style:italic; font-weight:300; font-size: 44px; color: var(--plum); letter-spacing:-0.01em; white-space:nowrap; }
+
+  /* handle big */
+  .handle-block { position:absolute; top: 1280px; left:0; right:0; text-align:center; }
+  .handle-block .label { font-family:'JetBrains Mono',monospace; font-size: 20px; letter-spacing:.5em; text-transform:uppercase; color: var(--plum-700); }
+  .handle-block .handle { margin-top:30px; font-family:'Fraunces',serif; font-style:italic; font-weight:300; font-size: 104px; line-height:1; color: var(--ink); letter-spacing:-0.02em; }
+  .handle-block .handle em { color: var(--plum); font-style:italic; }
+
+  /* footer thin */
+  .foot { position:absolute; bottom: 200px; left:100px; right:100px;
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top: 28px; border-top: 1px solid rgba(40,15,55,.18);
+    font-family:'JetBrains Mono',monospace; font-size:18px; letter-spacing:.4em; text-transform:uppercase; color: rgba(14,7,18,.55);
+  }
+  .vol { position:absolute; bottom: 140px; left:0; right:0; text-align:center;
+    font-family:'JetBrains Mono',monospace; font-size:14px; letter-spacing:.6em; text-transform:uppercase; color: rgba(14,7,18,.4);
+  }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="grain"></div>
+    <span class="corner tl"></span>
+    <span class="corner tr"></span>
+    <span class="corner bl"></span>
+    <span class="corner br"></span>
+
+    <div class="meta-top"><span>Vol. 10</span><span>Lorem ipsum</span><span>2026</span></div>
+
+    <h1 class="wordmark">Elect<br><em>Smith.</em></h1>
+
+    <div class="tagline-row">
+      <span class="rule"></span>
+      <span class="tag">Lorem ipsum dolor sit amet</span>
+      <span class="rule"></span>
+    </div>
+
+    <div class="handle-block">
+      <div class="label">— Follow along —</div>
+      <div class="handle">@<em>electsmith</em></div>
+    </div>
+
+    <div class="foot">
+      <span>End of story 10/10</span>
+      <span>Tap to begin again →</span>
+    </div>
+
+    <div class="vol">— Designed at the speed of you —</div>
+  </div>
+</body>
+</html>

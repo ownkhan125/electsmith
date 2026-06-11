@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Feed 09 · Wordmark Poster</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter+Tight:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --plum:#744577; --plum-700:#482a4b; --plum-800:#321e34; --plum-900:#1c1020; --cream-50:#fdfaeb; --cream-200:#f0e9b6; --mint:#84c5b1; --ink:#0e0712; }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html,body { background:#ece9e4; min-height:100vh; }
+  body { display:grid; place-items:center; padding:32px; font-family:'Inter Tight',system-ui,sans-serif; }
+  .canvas { width:1080px; height:1080px; position:relative; overflow:hidden;
+    background: linear-gradient(180deg, var(--plum) 0%, var(--plum-800) 60%, var(--plum-900) 100%);
+    color: var(--cream-50);
+    transform:scale(min(1, calc((100vw - 64px)/1080), calc((100vh - 64px)/1080))); transform-origin:center;
+    border-radius:4px; box-shadow:0 60px 120px -40px rgba(40,15,55,0.55);
+  }
+  .shine { position:absolute; inset:0; background: radial-gradient(60% 40% at 70% 10%, rgba(132,197,177,.35), transparent 70%); }
+  .grain { position:absolute; inset:0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(253,250,235,.07) 1px, transparent 0);
+    background-size: 4px 4px; mix-blend-mode: screen; pointer-events:none; }
+
+  /* corner ornaments */
+  .ornament { position:absolute; }
+  .ornament.tl { top:60px; left:60px; width:32px; height:32px; border:1px solid var(--cream-50); border-right:none; border-bottom:none; opacity:.6; }
+  .ornament.tr { top:60px; right:60px; width:32px; height:32px; border:1px solid var(--cream-50); border-left:none; border-bottom:none; opacity:.6; }
+  .ornament.bl { bottom:60px; left:60px; width:32px; height:32px; border:1px solid var(--cream-50); border-right:none; border-top:none; opacity:.6; }
+  .ornament.br { bottom:60px; right:60px; width:32px; height:32px; border:1px solid var(--cream-50); border-left:none; border-top:none; opacity:.6; }
+
+  .meta-top { position:absolute; top:120px; left:0; right:0; display:flex; justify-content:center;
+    font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.4em; text-transform:uppercase; color: rgba(253,250,235,.65);
+  }
+  .meta-top span { padding: 0 18px; position:relative; }
+  .meta-top span:not(:last-child)::after { content:'·'; position:absolute; right:-2px; color: var(--mint); }
+
+  /* mega wordmark */
+  .wordmark {
+    position:absolute; top: 50%; left: 0; right: 0; transform: translateY(-58%);
+    text-align:center;
+    font-family:'Fraunces',serif; font-weight:300; font-size: 280px; line-height:1; letter-spacing:-0.06em;
+    color: var(--cream-50);
+  }
+  .wordmark em { font-style:italic; color: var(--mint); }
+
+  /* rule + tag */
+  .rule-row { position:absolute; bottom: 240px; left:80px; right:80px; display:flex; align-items:center; gap:20px; }
+  .rule-row .rule { flex:1; height:1px; background: rgba(253,250,235,.25); }
+  .rule-row .tag { font-family:'Fraunces',serif; font-style:italic; font-weight:300; font-size: 36px; color: var(--cream-200); }
+  .rule-row .tag em { color: var(--mint); font-style:italic; }
+
+  .meta-bottom { position:absolute; bottom: 150px; left:80px; right:80px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.32em; text-transform:uppercase; color: rgba(253,250,235,.55);
+  }
+  .vol { position:absolute; bottom: 60px; left:0; right:0; text-align:center;
+    font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.6em; text-transform:uppercase; color: rgba(253,250,235,.35);
+  }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="shine"></div>
+    <div class="grain"></div>
+    <span class="ornament tl"></span>
+    <span class="ornament tr"></span>
+    <span class="ornament bl"></span>
+    <span class="ornament br"></span>
+
+    <div class="meta-top"><span>Vol. 09</span><span>Lorem</span><span>Ipsum 2026</span></div>
+
+    <h1 class="wordmark">Elect<em>Smith.</em></h1>
+
+    <div class="rule-row">
+      <span class="rule"></span>
+      <span class="tag">Lorem <em>ipsum,</em> dolor sit amet</span>
+      <span class="rule"></span>
+    </div>
+
+    <div class="meta-bottom">
+      <span>@electsmith</span>
+      <span>Vol. 09 / 10</span>
+      <span>06 · 11 · 2026</span>
+    </div>
+
+    <div class="vol">— A campaign for lorem ipsum —</div>
+  </div>
+</body>
+</html>

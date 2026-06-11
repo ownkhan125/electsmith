@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Story 09 · Poll Style</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --plum:#744577; --plum-700:#482a4b; --plum-900:#1c1020; --cream-50:#fdfaeb; --cream-200:#f0e9b6; --mint:#84c5b1; --sage:#accfa3; --ink:#0e0712; }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html,body { background:#ece9e4; min-height:100vh; }
+  body { display:grid; place-items:center; padding:24px; font-family:'Inter Tight',system-ui,sans-serif; }
+  .canvas { width:1080px; height:1920px; position:relative; overflow:hidden;
+    background: linear-gradient(180deg, var(--plum-900) 0%, #08040d 100%); color: var(--cream-50);
+    transform: scale(min(1, calc((100vw - 48px)/1080), calc((100vh - 48px)/1920))); transform-origin: center;
+    border-radius:6px; box-shadow:0 60px 120px -40px rgba(40,15,55,0.55);
+  }
+  .grid-bg { position:absolute; inset:0; opacity:.06;
+    background-image:
+      linear-gradient(to right, rgba(253,250,235,.5) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(253,250,235,.5) 1px, transparent 1px);
+    background-size: 80px 80px; }
+
+  .top { position:absolute; top:160px; left:100px; right:100px;
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:'JetBrains Mono',monospace; font-size:18px; letter-spacing:.36em; text-transform:uppercase; color: rgba(253,250,235,.7);
+  }
+  .top .pill { display:inline-flex; gap:14px; align-items:center; padding:14px 24px; border-radius:999px;
+    background: rgba(28,16,32,.55); border:1px solid rgba(253,250,235,.3); backdrop-filter: blur(8px); }
+  .top .pill .dot { width:12px; height:12px; border-radius:50%; background: var(--mint); }
+
+  /* big question */
+  .question { position:absolute; top: 340px; left:100px; right:100px;
+    font-family:'Fraunces',serif; font-weight:300; font-size: 160px; line-height:.96; letter-spacing:-0.045em; color: var(--cream-50);
+  }
+  .question em { font-style:italic; color: var(--mint); }
+
+  /* poll cards */
+  .poll { position:absolute; top: 880px; left:100px; right:100px; display:flex; flex-direction:column; gap: 28px; }
+  .opt {
+    display:flex; align-items:center; gap:40px; padding: 56px 60px;
+    border-radius: 32px; border: 1px solid rgba(253,250,235,.18);
+    background: rgba(253,250,235,.06); backdrop-filter: blur(10px);
+    color: var(--cream-50); position:relative; overflow:hidden;
+  }
+  .opt .num { font-family:'Fraunces',serif; font-style:italic; font-weight:300; font-size: 140px; line-height:.85; color: var(--mint); flex-shrink:0; }
+  .opt .label { font-family:'Fraunces',serif; font-weight:300; font-size: 64px; line-height: 1.05; letter-spacing:-0.025em; }
+  .opt .label em { font-style:italic; color: var(--cream-200); }
+  .opt .bar { position:absolute; left:0; top:0; height:100%; background: rgba(132,197,177,.18); pointer-events:none; }
+  .opt.a .bar { width: 68%; }
+  .opt.b .bar { width: 32%; background: rgba(116,69,119,.32); }
+  .opt .pct { margin-left:auto; font-family:'JetBrains Mono',monospace; font-size: 32px; letter-spacing:.2em; color: var(--cream-50); }
+
+  /* tap to vote */
+  .vote-cue { position:absolute; bottom: 330px; left:0; right:0; text-align:center;
+    font-family:'JetBrains Mono',monospace; font-size:18px; letter-spacing:.4em; text-transform:uppercase; color: rgba(253,250,235,.55);
+  }
+  .vote-cue strong { display:block; margin-top: 16px; font-family:'Fraunces',serif; font-style:italic; font-size:48px; font-weight:300; color: var(--cream-50); letter-spacing:-0.01em; text-transform:none; }
+
+  .brand-row { position:absolute; bottom: 150px; left:100px; right:100px;
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:'JetBrains Mono',monospace; font-size:18px; letter-spacing:.36em; text-transform:uppercase; color: rgba(253,250,235,.55);
+  }
+  .brand-row .brand { font-family:'Fraunces',serif; font-size:32px; letter-spacing:0; text-transform:none; color: var(--cream-50); }
+  .brand-row .brand em { color: var(--mint); font-style:normal; }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="grid-bg"></div>
+
+    <div class="top">
+      <span class="pill"><span class="dot"></span><span>Poll · Tap to vote</span></span>
+      <span>09 / 10</span>
+    </div>
+
+    <h1 class="question">Lorem<br>or <em>ipsum?</em></h1>
+
+    <div class="poll">
+      <div class="opt a">
+        <span class="bar"></span>
+        <span class="num">A</span>
+        <span class="label">Consectetur <em>adipiscing</em></span>
+        <span class="pct">68%</span>
+      </div>
+      <div class="opt b">
+        <span class="bar"></span>
+        <span class="num">B</span>
+        <span class="label">Sed do <em>eiusmod</em></span>
+        <span class="pct">32%</span>
+      </div>
+    </div>
+
+    <div class="vote-cue">
+      <span>↑ Tap to vote</span>
+      <strong>Lorem ipsum dolor sit amet.</strong>
+    </div>
+
+    <div class="brand-row">
+      <span class="brand">Elect<em>Smith</em></span>
+      <span>@electsmith</span>
+    </div>
+  </div>
+</body>
+</html>

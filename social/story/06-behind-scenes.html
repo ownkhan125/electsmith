@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Story 06 · Behind the Scenes</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Inter+Tight:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --plum:#744577; --plum-700:#482a4b; --plum-900:#1c1020; --cream-50:#fdfaeb; --cream-200:#f0e9b6; --mint:#84c5b1; --ink:#0e0712; --paper:#faf6e9; }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html,body { background:#ece9e4; min-height:100vh; }
+  body { display:grid; place-items:center; padding:24px; font-family:'Inter Tight',system-ui,sans-serif; }
+  .canvas { width:1080px; height:1920px; position:relative; overflow:hidden;
+    background:
+      radial-gradient(60% 50% at 80% 20%, rgba(229,220,148,.5) 0%, transparent 60%),
+      var(--paper);
+    transform: scale(min(1, calc((100vw - 48px)/1080), calc((100vh - 48px)/1920))); transform-origin: center;
+    border-radius:6px; box-shadow:0 60px 120px -40px rgba(40,15,55,0.45);
+    color: var(--ink);
+  }
+  .grain { position:absolute; inset:0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(40,15,55,0.06) 1px, transparent 0);
+    background-size: 4px 4px; opacity:.5; mix-blend-mode:multiply; pointer-events:none;
+  }
+
+  .top { position:absolute; top:160px; left:100px; right:100px;
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:'JetBrains Mono',monospace; font-size:18px; letter-spacing:.36em; text-transform:uppercase; color: var(--plum-700);
+  }
+  .top .left { display:flex; align-items:center; gap:20px; }
+  .top .left .rule { width:60px; height:1px; background: var(--plum); opacity:.6; }
+
+  /* big chapter label */
+  .chapter { position:absolute; top: 260px; left:100px;
+    font-family:'Caveat', cursive; font-weight:600; font-size: 110px; line-height: .95; color: var(--plum);
+    transform: rotate(-3deg);
+  }
+  .chapter small { display:block; font-family:'JetBrains Mono',monospace; font-size: 18px; letter-spacing:.4em; color: var(--plum-700); text-transform:uppercase; transform: rotate(3deg); margin-top: 14px; }
+
+  /* polaroid photo — anchored well below the chapter */
+  .polaroid {
+    position:absolute; top: 620px; left: 50%; transform: translateX(-50%) rotate(-2.5deg);
+    width: 680px; padding: 28px 28px 70px;
+    background: var(--cream-50);
+    box-shadow: 0 50px 90px -40px rgba(40,15,55,0.4), 0 0 0 1px rgba(40,15,55,.08);
+  }
+  .polaroid .img {
+    width: 100%; aspect-ratio: 1 / 1;
+    background: url('https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=1100&q=80') center/cover no-repeat;
+    filter: saturate(.9) contrast(1.05);
+  }
+  .polaroid .stamp {
+    position:absolute; right: 32px; bottom: 22px;
+    font-family: 'Caveat', cursive; font-size: 36px; color: var(--plum-900); transform: rotate(-2deg);
+  }
+  /* tape */
+  .tape { position:absolute; top: 595px; left:48%; transform: translateX(-50%) rotate(-4deg);
+    width: 180px; height: 44px; background: rgba(132,197,177,.7); box-shadow: 0 4px 12px rgba(40,15,55,.15);
+  }
+
+  /* caption strip */
+  .caption-strip { position:absolute; bottom: 380px; left:100px; right:100px;
+    background: var(--ink); color: var(--cream-50);
+    border-radius: 28px; padding: 40px 48px;
+    transform: rotate(1deg);
+    box-shadow: 0 30px 60px -30px rgba(28,16,32,.5);
+  }
+  .caption-strip .label { font-family:'JetBrains Mono',monospace; font-size:16px; letter-spacing:.4em; text-transform:uppercase; color: var(--mint); }
+  .caption-strip p { margin-top: 14px; font-family:'Fraunces',serif; font-style:italic; font-size: 48px; line-height: 1.2; color: var(--cream-50); }
+
+  /* brand */
+  .brand-row { position:absolute; bottom: 150px; left:100px; right:100px;
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:'JetBrains Mono',monospace; font-size:18px; letter-spacing:.36em; text-transform:uppercase; color: rgba(14,7,18,.55);
+  }
+  .brand-row .brand { font-family:'Fraunces',serif; font-size:34px; letter-spacing:0; text-transform:none; color: var(--ink); }
+  .brand-row .brand em { color: var(--plum); font-style:normal; }
+  .scribble { position:absolute; right: 130px; bottom: 230px; font-family:'Caveat', cursive; font-size: 56px; color: var(--plum); transform: rotate(-4deg); }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="grain"></div>
+
+    <div class="top">
+      <span class="left"><span class="rule"></span><span>Behind the scenes</span></span>
+      <span>Story 06 / 10</span>
+    </div>
+
+    <h1 class="chapter">Behind<br>the lens.<small>— No. 06 / Lorem ipsum</small></h1>
+
+    <div class="tape"></div>
+    <div class="polaroid">
+      <div class="img"></div>
+      <span class="stamp">06.11.26</span>
+    </div>
+
+    <div class="caption-strip">
+      <div class="label">— Lorem ipsum —</div>
+      <p>"Sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt."</p>
+    </div>
+
+    <div class="scribble">→ swipe</div>
+
+    <div class="brand-row">
+      <span class="brand">Elect<em>Smith</em></span>
+      <span>@electsmith</span>
+    </div>
+  </div>
+</body>
+</html>

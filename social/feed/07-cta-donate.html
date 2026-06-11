@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Feed 07 · CTA Donate</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --plum:#744577; --plum-700:#482a4b; --plum-900:#1c1020; --cream-50:#fdfaeb; --cream-100:#f9f3cf; --cream-200:#f0e9b6; --sage:#accfa3; --mint:#84c5b1; --ink:#0e0712; --paper:#faf6e9; }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html,body { background:#ece9e4; min-height:100vh; }
+  body { display:grid; place-items:center; padding:32px; font-family:'Inter Tight',system-ui,sans-serif; }
+  .canvas { width:1080px; height:1080px; position:relative; overflow:hidden;
+    background: linear-gradient(135deg, var(--cream-100) 0%, var(--mint) 50%, var(--sage) 100%); color:var(--ink);
+    transform:scale(min(1, calc((100vw - 64px)/1080), calc((100vh - 64px)/1080))); transform-origin:center;
+    border-radius:4px; box-shadow:0 60px 120px -40px rgba(40,15,55,0.45);
+  }
+  .grain { position:absolute; inset:0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(40,15,55,0.08) 1px, transparent 0);
+    background-size: 4px 4px; opacity:.4; mix-blend-mode:multiply; pointer-events:none; }
+  /* shimmery overlay */
+  .shine { position:absolute; inset:0;
+    background: linear-gradient(110deg, transparent 30%, rgba(253,250,235,.35) 50%, transparent 70%);
+    pointer-events:none; }
+
+  .top-row { position:absolute; top:80px; left:80px; right:80px;
+    display:flex; align-items:center; justify-content:space-between; }
+  .badge { display:inline-flex; align-items:center; gap:12px; padding:10px 18px; border-radius:999px;
+    background: rgba(28,16,32,.85); color: var(--cream-50);
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.32em; text-transform:uppercase;
+  }
+  .badge .dot { width:8px; height:8px; border-radius:50%; background:var(--mint); }
+  .index { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.32em; text-transform:uppercase; color: var(--plum-700); }
+
+  .headline { position:absolute; top: 180px; left:80px; right:80px;
+    font-family:'Fraunces',serif; font-weight:300; font-size: 144px; line-height:.95; letter-spacing:-0.045em; color: var(--plum-900);
+  }
+  .headline em { font-style:italic; color: var(--plum); }
+  .sub { position:absolute; top: 650px; left:80px; right:80px;
+    font-family:'Fraunces',serif; font-style:italic; font-weight:300; font-size:28px; line-height:1.35; color: var(--plum-700);
+    max-width: 600px;
+  }
+
+  /* big CTA button */
+  .cta-zone {
+    position:absolute; bottom: 170px; left:80px; right:80px;
+    display:flex; align-items:center; gap:18px;
+  }
+  .cta {
+    flex: 1;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 28px 36px; border-radius: 999px;
+    background: var(--plum-900); color: var(--cream-50);
+    box-shadow: 0 30px 60px -24px rgba(28,16,32,0.5);
+  }
+  .cta .label { font-family:'Fraunces',serif; font-style:italic; font-size: 48px; }
+  .cta .arrow-chip {
+    width:80px; height:80px; border-radius:50%;
+    background: var(--mint); color: var(--ink);
+    display:grid; place-items:center; font-size: 40px;
+    font-family:'Fraunces',serif;
+  }
+  /* small amount preview pills */
+  .amounts { position:absolute; bottom: 120px; left:80px; right:80px;
+    display:flex; gap:10px; align-items:center;
+    font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.32em; text-transform:uppercase; color: var(--plum-700);
+  }
+  .amounts .pill { padding:8px 16px; border-radius:999px; border:1px solid rgba(28,16,32,.18); background: rgba(253,250,235,.55); backdrop-filter: blur(6px); }
+  .amounts .pill.active { background: var(--plum-900); color: var(--cream-50); border-color: var(--plum-900); }
+  .amounts .brand { margin-left:auto; font-family:'Fraunces',serif; font-size:18px; letter-spacing:0; text-transform:none; color: var(--plum-900); }
+  .amounts .brand em { color: var(--plum); font-style:normal; }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="grain"></div>
+    <div class="shine"></div>
+
+    <div class="top-row">
+      <span class="badge"><span class="dot"></span><span>Limited offer · Lorem</span></span>
+      <span class="index">07 / 10</span>
+    </div>
+
+    <h1 class="headline">Donate<br><em>today,</em><br>Lorem ipsum.</h1>
+    <p class="sub">Sed do eiusmod tempor — incididunt ut labore.</p>
+
+    <div class="cta-zone">
+      <a class="cta">
+        <span class="label">Donate now</span>
+        <span class="arrow-chip">→</span>
+      </a>
+    </div>
+
+    <div class="amounts">
+      <span class="pill">$25</span>
+      <span class="pill">$50</span>
+      <span class="pill active">$100</span>
+      <span class="pill">$250</span>
+      <span class="pill">$500</span>
+      <span class="brand">Elect<em>Smith</em></span>
+    </div>
+  </div>
+</body>
+</html>

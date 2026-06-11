@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>ElectSmith · Social Campaign Pack</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --plum:#744577; --plum-700:#482a4b; --plum-900:#1c1020;
+    --cream-50:#fdfaeb; --cream-200:#f0e9b6;
+    --mint:#84c5b1; --sage:#accfa3;
+    --ink:#0e0712; --paper:#faf6e9;
+  }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html,body { background: var(--paper); color: var(--ink); font-family:'Inter Tight',system-ui,sans-serif; }
+  body { min-height:100vh; padding: 80px clamp(24px, 6vw, 96px); }
+  .page-hero { max-width: 1200px; margin: 0 auto 80px; }
+  .eyebrow { display:flex; align-items:center; gap:18px; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.32em; text-transform:uppercase; color: var(--plum); }
+  .eyebrow .rule { width:60px; height:1px; background: var(--plum); opacity:.55; }
+  h1 { margin-top: 32px; font-family:'Fraunces',serif; font-weight:300; font-size: clamp(48px, 7vw, 120px); line-height:.95; letter-spacing:-0.035em; }
+  h1 em { font-style:italic; color: var(--plum); }
+  .lede { margin-top: 28px; max-width: 720px; font-size: clamp(18px, 1.6vw, 22px); line-height: 1.55; color: rgba(14,7,18,.72); }
+  .lede strong { color: var(--ink); font-weight: 600; }
+
+  /* sections */
+  .section { max-width: 1400px; margin: 0 auto 100px; }
+  .section-header { display:flex; align-items:flex-end; justify-content:space-between; gap: 24px; padding-bottom: 24px; border-bottom: 1px solid rgba(40,15,55,.15); margin-bottom: 40px; }
+  .section-header h2 { font-family:'Fraunces',serif; font-weight:300; font-size: clamp(32px, 4vw, 56px); letter-spacing:-0.025em; }
+  .section-header h2 em { font-style:italic; color: var(--plum); }
+  .section-header .meta { font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.32em; text-transform:uppercase; color: rgba(14,7,18,.55); }
+
+  /* feed grid */
+  .grid-feed { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+  .grid-story { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; }
+  .card { display:block; position:relative; text-decoration:none; color: inherit;
+    transition: transform 0.4s cubic-bezier(.22,1,.36,1);
+  }
+  .card:hover { transform: translateY(-4px); }
+  .thumb { position:relative; overflow:hidden; border-radius: 12px; box-shadow: 0 20px 50px -20px rgba(40,15,55,.4); background: var(--ink); }
+  .thumb.feed { aspect-ratio: 1 / 1; }
+  .thumb.story { aspect-ratio: 9 / 16; }
+  .thumb iframe { width: 1080px; border: 0;
+    transform-origin: top left;
+  }
+  .thumb.feed iframe { height: 1080px; }
+  .thumb.story iframe { height: 1920px; }
+  /* scale via container size */
+  .thumb { isolation: isolate; }
+  .thumb iframe {
+    position:absolute; top:0; left:0;
+    transform: scale(var(--scale, 0.3));
+    pointer-events: none;
+  }
+  /* override per breakpoint via container queries fallback: use vw based scale */
+  .card-meta { display:flex; align-items:center; justify-content:space-between; margin-top: 14px; }
+  .card-meta .index { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.32em; text-transform:uppercase; color: rgba(14,7,18,.55); }
+  .card-meta .title { font-family:'Fraunces',serif; font-style:italic; font-size: 18px; color: var(--plum); }
+
+  footer { max-width: 1200px; margin: 0 auto; padding-top: 60px; border-top: 1px solid rgba(40,15,55,.15);
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap: 16px;
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.32em; text-transform:uppercase; color: rgba(14,7,18,.55);
+  }
+  .brand { font-family:'Fraunces',serif; font-size:24px; letter-spacing:0; text-transform:none; color: var(--ink); }
+  .brand em { color: var(--plum); font-style:normal; }
+</style>
+</head>
+<body>
+  <section class="page-hero">
+    <div class="eyebrow"><span class="rule"></span><span>Social pack · Vol. 01 / 2026</span></div>
+    <h1>20 creatives.<br>One <em>cinematic</em> brand voice.</h1>
+    <p class="lede">A <strong>complete social campaign pack</strong> — 10 Instagram feed posts and 10 stories — designed as standalone agency-quality creatives. Each composition is unique: editorial, premium, modern, and built for visual impact in the feed. Copy is placeholder Lorem ipsum.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h2>Feed posts <em>·</em> 1:1</h2>
+      <span class="meta">10 designs · 1080 × 1080</span>
+    </div>
+    <div class="grid-feed">
+      <a class="card" href="feed/01-pull-quote.html" target="_blank"><div class="thumb feed"><iframe src="feed/01-pull-quote.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">01</span><span class="title">Pull quote</span></div></a>
+      <a class="card" href="feed/02-bold-announcement.html" target="_blank"><div class="thumb feed"><iframe src="feed/02-bold-announcement.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">02</span><span class="title">Announcement</span></div></a>
+      <a class="card" href="feed/03-mega-stat.html" target="_blank"><div class="thumb feed"><iframe src="feed/03-mega-stat.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">03</span><span class="title">Mega stat</span></div></a>
+      <a class="card" href="feed/04-event-poster.html" target="_blank"><div class="thumb feed"><iframe src="feed/04-event-poster.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">04</span><span class="title">Event poster</span></div></a>
+      <a class="card" href="feed/05-editorial-testimonial.html" target="_blank"><div class="thumb feed"><iframe src="feed/05-editorial-testimonial.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">05</span><span class="title">Testimonial</span></div></a>
+      <a class="card" href="feed/06-bold-question.html" target="_blank"><div class="thumb feed"><iframe src="feed/06-bold-question.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">06</span><span class="title">Bold question</span></div></a>
+      <a class="card" href="feed/07-cta-donate.html" target="_blank"><div class="thumb feed"><iframe src="feed/07-cta-donate.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">07</span><span class="title">CTA · donate</span></div></a>
+      <a class="card" href="feed/08-impact-grid.html" target="_blank"><div class="thumb feed"><iframe src="feed/08-impact-grid.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">08</span><span class="title">Impact grid</span></div></a>
+      <a class="card" href="feed/09-wordmark-poster.html" target="_blank"><div class="thumb feed"><iframe src="feed/09-wordmark-poster.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">09</span><span class="title">Wordmark poster</span></div></a>
+      <a class="card" href="feed/10-carousel-opener.html" target="_blank"><div class="thumb feed"><iframe src="feed/10-carousel-opener.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">10</span><span class="title">Carousel opener</span></div></a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h2>Stories <em>·</em> 9:16</h2>
+      <span class="meta">10 designs · 1080 × 1920</span>
+    </div>
+    <div class="grid-story">
+      <a class="card" href="story/01-vertical-announcement.html" target="_blank"><div class="thumb story"><iframe src="story/01-vertical-announcement.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">01</span><span class="title">Announcement</span></div></a>
+      <a class="card" href="story/02-event-poster.html" target="_blank"><div class="thumb story"><iframe src="story/02-event-poster.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">02</span><span class="title">Event poster</span></div></a>
+      <a class="card" href="story/03-vertical-stat.html" target="_blank"><div class="thumb story"><iframe src="story/03-vertical-stat.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">03</span><span class="title">Mega stat</span></div></a>
+      <a class="card" href="story/04-vertical-quote.html" target="_blank"><div class="thumb story"><iframe src="story/04-vertical-quote.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">04</span><span class="title">Pull quote</span></div></a>
+      <a class="card" href="story/05-cta-vertical.html" target="_blank"><div class="thumb story"><iframe src="story/05-cta-vertical.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">05</span><span class="title">CTA · swipe up</span></div></a>
+      <a class="card" href="story/06-behind-scenes.html" target="_blank"><div class="thumb story"><iframe src="story/06-behind-scenes.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">06</span><span class="title">Behind the scenes</span></div></a>
+      <a class="card" href="story/07-countdown.html" target="_blank"><div class="thumb story"><iframe src="story/07-countdown.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">07</span><span class="title">Countdown</span></div></a>
+      <a class="card" href="story/08-endorsement.html" target="_blank"><div class="thumb story"><iframe src="story/08-endorsement.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">08</span><span class="title">Endorsement</span></div></a>
+      <a class="card" href="story/09-poll-style.html" target="_blank"><div class="thumb story"><iframe src="story/09-poll-style.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">09</span><span class="title">Poll</span></div></a>
+      <a class="card" href="story/10-brand-close.html" target="_blank"><div class="thumb story"><iframe src="story/10-brand-close.html" scrolling="no" loading="lazy"></iframe></div><div class="card-meta"><span class="index">10</span><span class="title">Brand close</span></div></a>
+    </div>
+  </section>
+
+  <footer>
+    <span class="brand">Elect<em>Smith</em> · Social Pack</span>
+    <span>Vol. 01 · 06.11.2026</span>
+    <span>20 creatives · placeholder copy</span>
+  </footer>
+
+  <script>
+    // Auto-scale iframes to fit their parent .thumb width
+    function fit() {
+      document.querySelectorAll('.thumb').forEach((el) => {
+        const w = el.clientWidth;
+        const iframe = el.querySelector('iframe');
+        if (!iframe) return;
+        const native = el.classList.contains('story') ? 1080 : 1080;
+        iframe.style.transform = `scale(${w / native})`;
+        // Re-height container is via aspect-ratio, but iframe size sets internal — make iframe natural
+        if (el.classList.contains('story')) {
+          iframe.style.width = '1080px';
+          iframe.style.height = '1920px';
+        } else {
+          iframe.style.width = '1080px';
+          iframe.style.height = '1080px';
+        }
+      });
+    }
+    window.addEventListener('load', fit);
+    window.addEventListener('resize', fit);
+  </script>
+</body>
+</html>
