@@ -29,7 +29,28 @@
       "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-test-social.js)",
       "Bash(node run.js -e ' *)",
       "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-test-social-fix.js)",
-      "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-test-social-reverify.js)"
+      "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-test-social-reverify.js)",
+      "Bash(mkdir -p C:/Users/General/Documents/GitHub/ElectSmith/public/social-creatives/feed C:/Users/General/Documents/GitHub/ElectSmith/public/social-creatives/story)",
+      "Bash(cp C:/Users/General/Documents/GitHub/ElectSmith/social/feed/*.html C:/Users/General/Documents/GitHub/ElectSmith/public/social-creatives/feed/)",
+      "Bash(cp C:/Users/General/Documents/GitHub/ElectSmith/social/story/*.html C:/Users/General/Documents/GitHub/ElectSmith/public/social-creatives/story/)",
+      "Bash(node -e \"require\\('./lib/helpers'\\).detectDevServers\\(\\).then\\(s => console.log\\(JSON.stringify\\(s\\)\\)\\)\")",
+      "Bash(netstat -ano)",
+      "Read(//c/tmp/**)",
+      "Bash(node run.js /tmp/playwright-test-social.js)",
+      "Bash(tee /tmp/playwright-output.txt)",
+      "Bash(tasklist)",
+      "Bash(echo \"PID: $!\")",
+      "Bash(kill -0 12869)",
+      "Bash(kill -0 12977)",
+      "Bash(grep -oE '\\(srcdoc|src\\)=\"[^\"]{20,80}')",
+      "Bash(grep -oE 'srcdoc=\"[^\"]{0,60}')",
+      "Bash(PORT=3050 npx next dev -p 3050)",
+      "Bash(echo \"DEV_PID: $!\")",
+      "Bash(rm -rf C:/Users/General/Documents/GitHub/ElectSmith/.claude/skills/playwright-skill/_shots)",
+      "Bash(node test-social.js)",
+      "Bash(kill -0 13082)",
+      "Bash(rm -rf C:/Users/General/Documents/GitHub/ElectSmith/.claude/skills/playwright-skill/test-social.js C:/Users/General/Documents/GitHub/ElectSmith/.claude/skills/playwright-skill/_shots)",
+      "Bash(kill 13044)"
     ]
   }
 }

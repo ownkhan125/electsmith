@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Story 04 · Vertical Quote</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --plum:#744577; --plum-700:#482a4b; --plum-900:#1c1020; --cream-50:#fdfaeb; --cream-200:#f0e9b6; --mint:#84c5b1; --ink:#0e0712; --paper:#faf6e9; }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html,body { background:#ece9e4; min-height:100vh; }
+  body { display:grid; place-items:center; padding:24px; font-family:'Inter Tight',system-ui,sans-serif; }
+  .canvas { width:1080px; height:1920px; position:relative; overflow:hidden;
+    background: var(--paper); color: var(--ink);
+    transform: scale(min(1, calc((100vw - 48px)/1080), calc((100vh - 48px)/1920))); transform-origin: center;
+    border-radius:6px; box-shadow:0 60px 120px -40px rgba(40,15,55,0.45);
+  }
+  .wash { position:absolute; inset:0; pointer-events:none;
+    background:
+      radial-gradient(60% 35% at 100% 0%, rgba(132,197,177,.25), transparent 70%),
+      radial-gradient(60% 35% at 0% 100%, rgba(229,220,148,.5), transparent 70%);
+  }
+  .grain { position:absolute; inset:0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(40,15,55,0.06) 1px, transparent 0);
+    background-size: 4px 4px; opacity:.5; mix-blend-mode:multiply; pointer-events:none;
+  }
+  /* giant open quote */
+  .open { position:absolute; top: 240px; left: 60px;
+    font-family:'Fraunces',serif; font-style:italic; font-weight:300; font-size: 720px; line-height:.7; color: var(--plum); opacity:.15;
+    user-select:none; pointer-events:none;
+  }
+
+  .top { position:absolute; top:160px; left:100px; right:100px;
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:'JetBrains Mono',monospace; font-size:18px; letter-spacing:.36em; text-transform:uppercase; color: var(--plum-700);
+  }
+  .top .left { display:flex; align-items:center; gap:20px; }
+  .top .rule { width:60px; height:1px; background: var(--plum); opacity:.55; }
+
+  /* quote */
+  .quote { position:absolute; top: 420px; left:100px; right:100px;
+    font-family:'Fraunces',serif; font-style:italic; font-weight:300; font-size: 112px; line-height: 1.08;
+    color: var(--ink); letter-spacing:-0.025em;
+  }
+  .quote em { font-style:italic; color: var(--plum); }
+  .quote .underline { background-image: linear-gradient(var(--plum), var(--plum)); background-size: 100% 3px; background-repeat:no-repeat; background-position: 0 95%; padding-bottom: 4px; }
+
+  /* attribution card */
+  .attribution { position:absolute; bottom: 380px; left:100px; right:100px;
+    padding: 36px 40px;
+    background: var(--cream-50);
+    border-radius: 28px;
+    border: 1px solid rgba(40,15,55,.12);
+    display:flex; align-items:center; gap: 28px;
+    box-shadow: 0 30px 60px -30px rgba(40,15,55,.35);
+  }
+  .attribution .avatar { width: 96px; height: 96px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--plum), var(--plum-700));
+    color: var(--cream-50); display:grid; place-items:center;
+    font-family:'Fraunces',serif; font-size: 40px; font-weight: 400;
+    flex-shrink: 0;
+  }
+  .attribution .name { font-family:'Fraunces',serif; font-size: 44px; color: var(--ink); }
+  .attribution .role { font-family:'JetBrains Mono',monospace; font-size: 16px; letter-spacing: .28em; text-transform:uppercase; color: rgba(14,7,18,.55); margin-top: 8px; }
+
+  .footer { position:absolute; bottom: 160px; left:100px; right:100px;
+    display:flex; align-items:center; justify-content:space-between;
+    border-top: 1px solid rgba(40,15,55,.15); padding-top: 24px;
+  }
+  .footer .brand { font-family:'Fraunces',serif; font-size: 34px; color: var(--ink); }
+  .footer .brand em { color: var(--plum); font-style:normal; }
+  .footer .handle { font-family:'JetBrains Mono',monospace; font-size:18px; letter-spacing:.36em; text-transform:uppercase; color: rgba(14,7,18,.5); }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="wash"></div>
+    <div class="grain"></div>
+    <div class="open">"</div>
+
+    <div class="top">
+      <span class="left"><span class="rule"></span><span>In their words · 04</span></span>
+      <span>Story 04 / 10</span>
+    </div>
+
+    <p class="quote">Lorem <em>ipsum</em> dolor sit amet, consectetur <em>adipiscing</em> elit — <span class="underline">sed do eiusmod tempor</span> incididunt.</p>
+
+    <div class="attribution">
+      <div class="avatar">L</div>
+      <div>
+        <div class="name">Lorem Ipsum</div>
+        <div class="role">Consectetur · Adipiscing Elit</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span class="brand">Elect<em>Smith</em></span>
+      <span class="handle">@electsmith</span>
+    </div>
+  </div>
+</body>
+</html>

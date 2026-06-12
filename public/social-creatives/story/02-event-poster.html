@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Story 02 · Event Poster Vertical</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Inter+Tight:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --plum:#744577; --plum-700:#482a4b; --plum-900:#1c1020; --cream-50:#fdfaeb; --cream-200:#f0e9b6; --mint:#84c5b1; --ink:#0e0712; }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html,body { background:#ece9e4; min-height:100vh; }
+  body { display:grid; place-items:center; padding:24px; font-family:'Inter Tight',system-ui,sans-serif; }
+  .canvas { width:1080px; height:1920px; position:relative; overflow:hidden;
+    background: var(--plum-900); color: var(--cream-50);
+    transform: scale(min(1, calc((100vw - 48px)/1080), calc((100vh - 48px)/1920))); transform-origin: center;
+    border-radius:6px; box-shadow:0 60px 120px -40px rgba(40,15,55,0.6);
+  }
+  .photo { position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(28,16,32,.25) 0%, rgba(28,16,32,.4) 40%, rgba(28,16,32,.95) 95%),
+      url('https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=1400&q=80') center/cover no-repeat; }
+  .veil { position:absolute; inset:0; background: linear-gradient(120deg, rgba(116,69,119,.3) 0%, transparent 60%); }
+  /* ticket border */
+  .frame { position:absolute; top:60px; left:60px; right:60px; bottom:60px; border:1px solid rgba(253,250,235,.16); border-radius:8px; pointer-events:none; }
+
+  .top { position:absolute; top:160px; left:100px; right:100px;
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:'JetBrains Mono',monospace; font-size:18px; letter-spacing:.36em; text-transform:uppercase; color: rgba(253,250,235,.7);
+  }
+  .top .pill { display:inline-flex; gap:14px; align-items:center; padding:14px 24px; border-radius:999px;
+    background: rgba(253,250,235,.08); border:1px solid rgba(253,250,235,.3); backdrop-filter: blur(8px); }
+  .top .pill .dot { width:12px; height:12px; border-radius:50%; background: var(--mint); }
+
+  /* central event card */
+  .card { position:absolute; top: 50%; left: 100px; right: 100px; transform: translateY(-50%);
+    border-top: 1px solid rgba(253,250,235,.3); border-bottom: 1px solid rgba(253,250,235,.3);
+    padding: 80px 0; text-align:center;
+  }
+  .card .month { font-family:'JetBrains Mono',monospace; font-size:20px; letter-spacing:.5em; text-transform:uppercase; color: var(--mint); }
+  .card .day { font-family:'Fraunces',serif; font-weight:300; font-size: 480px; line-height:.85; letter-spacing:-0.05em; color: var(--cream-50); margin-top: 10px; }
+  .card .weekday { font-family:'Fraunces',serif; font-style:italic; font-weight:300; font-size: 80px; color: var(--cream-200); margin-top: -10px; }
+
+  .title { position:absolute; bottom: 480px; left:100px; right:100px; text-align:center;
+    font-family:'Fraunces',serif; font-weight:300; font-size: 124px; line-height:1.02; letter-spacing:-0.035em; color: var(--cream-50);
+  }
+  .title em { font-style:italic; color: var(--mint); }
+
+  .meta-line { position:absolute; bottom: 380px; left:100px; right:100px; text-align:center;
+    font-family:'JetBrains Mono',monospace; font-size:20px; letter-spacing:.4em; text-transform:uppercase; color: rgba(253,250,235,.7);
+  }
+
+  /* RSVP CTA */
+  .cta { position:absolute; bottom: 220px; left:100px; right:100px;
+    display:flex; align-items:center; justify-content:center; gap: 20px;
+    padding: 36px 48px; border: 1px solid var(--cream-50); border-radius: 999px;
+    background: rgba(253,250,235,.08); backdrop-filter: blur(10px);
+    font-family:'Fraunces',serif; font-style:italic; font-size: 56px; color: var(--cream-50);
+  }
+  .cta .arrow { width:80px; height:80px; border-radius:50%; background: var(--cream-50); color: var(--ink); display:grid; place-items:center; font-size: 40px; font-style:normal; }
+
+  .brand-row { position:absolute; bottom: 120px; left:100px; right:100px;
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:'JetBrains Mono',monospace; font-size:18px; letter-spacing:.36em; text-transform:uppercase; color: rgba(253,250,235,.55);
+  }
+  .brand-row .brand { font-family:'Fraunces',serif; font-size:34px; letter-spacing:0; text-transform:none; color: var(--cream-50); }
+  .brand-row .brand em { color: var(--mint); font-style:normal; }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="photo"></div>
+    <div class="veil"></div>
+    <div class="frame"></div>
+
+    <div class="top">
+      <span class="pill"><span class="dot"></span><span>Save the date</span></span>
+      <span>Story 02 / 10</span>
+    </div>
+
+    <div class="card">
+      <div class="month">Jun</div>
+      <div class="day">22</div>
+      <div class="weekday">— Saturday —</div>
+    </div>
+
+    <h2 class="title">Lorem ipsum<br><em>dolor</em> sit.</h2>
+    <div class="meta-line">10:00 AM · Consectetur adipiscing</div>
+
+    <div class="cta"><span>Reserve a seat</span><span class="arrow">→</span></div>
+
+    <div class="brand-row">
+      <span class="brand">Elect<em>Smith</em></span>
+      <span>@electsmith</span>
+    </div>
+  </div>
+</body>
+</html>

@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { label: 'Events', href: '/events' },
   { label: 'Endorsements', href: '/endorsements' },
   { label: 'News', href: '/news' },
+  { label: 'Social', href: '/social-media-posts' },
 ]
 
 const Navbar = () => {

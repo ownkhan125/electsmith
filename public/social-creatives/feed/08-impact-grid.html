@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Feed 08 · Impact Grid</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --plum:#744577; --plum-700:#482a4b; --plum-900:#1c1020; --cream-50:#fdfaeb; --cream-200:#f0e9b6; --mint:#84c5b1; --sage:#accfa3; --ink:#0e0712; --paper:#faf6e9; }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html,body { background:#ece9e4; min-height:100vh; }
+  body { display:grid; place-items:center; padding:32px; font-family:'Inter Tight',system-ui,sans-serif; }
+  .canvas { width:1080px; height:1080px; position:relative; overflow:hidden;
+    transform:scale(min(1, calc((100vw - 64px)/1080), calc((100vh - 64px)/1080))); transform-origin:center;
+    border-radius:4px; box-shadow:0 60px 120px -40px rgba(40,15,55,0.45);
+    color: var(--cream-50);
+  }
+  /* full bleed darkened photo */
+  .photo { position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(28,16,32,.55) 0%, rgba(28,16,32,.85) 100%),
+      url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1400&q=80') center/cover no-repeat;
+    filter: saturate(.85); }
+  .veil { position:absolute; inset:0; background: linear-gradient(135deg, rgba(116,69,119,.35) 0%, transparent 50%, rgba(132,197,177,.18) 100%); }
+
+  .header { position:absolute; top:80px; left:80px; right:80px;
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.32em; text-transform:uppercase; color: rgba(253,250,235,.7); }
+  .header .left { display:flex; align-items:center; gap:14px; }
+  .header .rule { width:60px; height:1px; background: var(--mint); }
+
+  .title { position:absolute; top: 180px; left:80px; right: 200px;
+    font-family:'Fraunces',serif; font-weight:300; font-size: 120px; line-height:.96; letter-spacing:-0.04em; color: var(--cream-50);
+  }
+  .title em { font-style:italic; color: var(--mint); }
+
+  /* 3-stat row */
+  .grid { position:absolute; bottom: 200px; left:80px; right:80px;
+    display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px;
+  }
+  .stat-card { padding: 36px 28px;
+    background: rgba(253,250,235,.06); backdrop-filter: blur(12px);
+    border: 1px solid rgba(253,250,235,.18); border-radius: 24px;
+    position:relative; overflow:hidden;
+  }
+  .stat-card::before { content:''; position:absolute; inset-inline:0; top:0; height:2px;
+    background: linear-gradient(90deg, transparent, var(--mint), transparent); }
+  .stat-card .label { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.32em; text-transform:uppercase; color: var(--mint); }
+  .stat-card .num { margin-top: 18px; font-family:'Fraunces',serif; font-weight:300; font-size: 132px; line-height:1; letter-spacing:-0.04em; color: var(--cream-50); }
+  .stat-card .num em { font-style:italic; color: var(--cream-200); }
+  .stat-card .cap { margin-top: 14px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color: rgba(253,250,235,.6); }
+
+  .footer { position:absolute; bottom: 80px; left:80px; right:80px;
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top: 22px; border-top:1px solid rgba(253,250,235,.18);
+  }
+  .footer .brand { font-family:'Fraunces',serif; font-size:24px; color: var(--cream-50); }
+  .footer .brand em { color: var(--mint); font-style:normal; }
+  .footer .handle { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.32em; text-transform:uppercase; color: rgba(253,250,235,.55); }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="photo"></div>
+    <div class="veil"></div>
+
+    <div class="header">
+      <span class="left"><span class="rule"></span><span>Impact report · Lorem 2026</span></span>
+      <span>08 / 10</span>
+    </div>
+
+    <h1 class="title">Lorem<br><em>impact,</em><br>dolor sit.</h1>
+
+    <div class="grid">
+      <div class="stat-card">
+        <div class="label">Lorem</div>
+        <div class="num">18<em>k+</em></div>
+        <div class="cap">Ipsum dolor sit</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Sit amet</div>
+        <div class="num">342</div>
+        <div class="cap">Consectetur adipiscing</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Eiusmod</div>
+        <div class="num">31</div>
+        <div class="cap">Tempor incididunt</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span class="brand">Elect<em>Smith</em></span>
+      <span class="handle">Lorem · ipsum 2026</span>
+      <span class="handle">@electsmith</span>
+    </div>
+  </div>
+</body>
+</html>

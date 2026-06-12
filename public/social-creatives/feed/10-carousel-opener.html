@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Feed 10 · Carousel Opener</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --plum:#744577; --plum-700:#482a4b; --plum-900:#1c1020; --cream-50:#fdfaeb; --cream-200:#f0e9b6; --mint:#84c5b1; --sage:#accfa3; --ink:#0e0712; --paper:#faf6e9; }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html,body { background:#ece9e4; min-height:100vh; }
+  body { display:grid; place-items:center; padding:32px; font-family:'Inter Tight',system-ui,sans-serif; }
+  .canvas { width:1080px; height:1080px; position:relative; overflow:hidden;
+    background: var(--paper);
+    transform:scale(min(1, calc((100vw - 64px)/1080), calc((100vh - 64px)/1080))); transform-origin:center;
+    border-radius:4px; box-shadow:0 60px 120px -40px rgba(40,15,55,0.4);
+  }
+  .wash { position:absolute; inset:0;
+    background:
+      radial-gradient(45% 35% at 85% 100%, rgba(132,197,177,.32) 0%, transparent 70%),
+      radial-gradient(45% 35% at 15% 0%, rgba(229,220,148,.5) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .grain { position:absolute; inset:0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(40,15,55,0.06) 1px, transparent 0);
+    background-size: 4px 4px; opacity:.45; mix-blend-mode: multiply; }
+
+  /* huge serial */
+  .serial {
+    position:absolute; top: 80px; left: 80px;
+    display:flex; align-items:baseline; gap:24px;
+  }
+  .serial .num { font-family:'Fraunces',serif; font-weight:300; font-style:italic; font-size: 360px; line-height:.85; color: var(--plum); letter-spacing:-0.05em; }
+  .serial .total { font-family:'JetBrains Mono',monospace; font-size:18px; letter-spacing:.4em; text-transform:uppercase; color: var(--plum-700); padding-bottom: 18px; }
+
+  /* eyebrow on opposite side */
+  .eyebrow { position:absolute; top: 120px; right: 80px;
+    text-align:right;
+    font-family:'JetBrains Mono',monospace; font-size: 12px; letter-spacing:.32em; text-transform:uppercase; color: var(--plum-700);
+  }
+  .eyebrow strong { display:block; font-family:'Fraunces',serif; font-style:italic; font-weight:300; font-size: 36px; color: var(--plum); margin-top: 14px; letter-spacing:-0.01em; text-transform:none; }
+
+  /* title */
+  .title {
+    position:absolute; top: 480px; left:80px; right:80px;
+    font-family:'Fraunces',serif; font-weight:300; font-size: 112px; line-height:.98; letter-spacing:-0.035em; color: var(--ink);
+  }
+  .title em { font-style:italic; color: var(--plum); }
+
+  /* body lorem */
+  .body { position:absolute; top: 740px; left:80px; right:80px;
+    font-size: 22px; line-height: 1.5; color: rgba(14,7,18,.7);
+    max-width: 700px;
+  }
+  /* dot navigation */
+  .dots { position:absolute; bottom: 220px; left:80px; display:flex; gap:10px; align-items:center; }
+  .dots .d { width: 36px; height: 4px; border-radius: 4px; background: rgba(40,15,55,.18); }
+  .dots .d.active { width: 64px; background: var(--plum); }
+
+  /* swipe cue */
+  .swipe { position:absolute; bottom: 100px; right: 80px;
+    display:flex; align-items:center; gap:18px;
+    font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:.36em; text-transform:uppercase; color: var(--plum-700);
+  }
+  .swipe .arrow { width:80px; height:80px; border-radius:50%; background: var(--plum); color: var(--cream-50);
+    display:grid; place-items:center; font-family:'Fraunces',serif; font-size: 40px;
+    box-shadow: 0 20px 40px -20px rgba(40,15,55,.5);
+  }
+  /* brand */
+  .brand { position:absolute; bottom: 100px; left:80px; font-family:'Fraunces',serif; font-size:22px; color: var(--ink); }
+  .brand em { color: var(--plum); font-style:normal; }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="wash"></div>
+    <div class="grain"></div>
+
+    <div class="serial"><span class="num">01</span><span class="total">/ 06 chapters</span></div>
+
+    <div class="eyebrow">A carousel guide<strong>Lorem ipsum dolor</strong></div>
+
+    <h1 class="title">A primer on <em>lorem,</em><br>ipsum &amp; dolor.</h1>
+
+    <p class="body">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.</p>
+
+    <div class="dots">
+      <span class="d active"></span>
+      <span class="d"></span>
+      <span class="d"></span>
+      <span class="d"></span>
+      <span class="d"></span>
+      <span class="d"></span>
+    </div>
+
+    <span class="brand">Elect<em>Smith</em></span>
+
+    <div class="swipe">
+      <span>Swipe</span>
+      <span class="arrow">→</span>
+    </div>
+  </div>
+</body>
+</html>

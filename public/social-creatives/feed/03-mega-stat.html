@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Feed 03 · Mega Stat</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --plum:#744577; --plum-700:#482a4b; --plum-900:#1c1020; --cream-50:#fdfaeb; --cream-200:#f0e9b6; --sage:#accfa3; --mint:#84c5b1; --ink:#0e0712; --paper:#faf6e9; }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html,body { background:#ece9e4; min-height:100vh; }
+  body { display:grid; place-items:center; padding:32px; font-family:'Inter Tight', system-ui, sans-serif; }
+  .canvas { width:1080px; height:1080px; position:relative; overflow:hidden; background: var(--paper);
+    transform: scale(min(1, calc((100vw - 64px)/1080), calc((100vh - 64px)/1080))); transform-origin:center; border-radius:4px;
+    box-shadow:0 60px 120px -40px rgba(40,15,55,0.35); }
+  /* diagonal split: cream top-left, mint bottom-right */
+  .split { position:absolute; inset:0;
+    background: linear-gradient(135deg, var(--paper) 0%, var(--paper) 55%, var(--mint) 55%, var(--sage) 100%); }
+  .grain { position:absolute; inset:0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(40,15,55,0.07) 1px, transparent 0);
+    background-size: 4px 4px; opacity:.4; mix-blend-mode: multiply; pointer-events:none; }
+  /* labels */
+  .top-row { position:absolute; top:80px; left:80px; right:80px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:var(--plum-700); }
+  .top-row .label { display:flex; align-items:center; gap:18px; }
+  .top-row .label .rule { width:64px; height:1px; background:var(--plum); opacity:.55; }
+  /* The stat */
+  .stat-wrap { position:absolute; top:200px; left:80px; }
+  .stat { font-family:'Fraunces',serif; font-style:italic; font-weight:300;
+    font-size: 640px; line-height:.86; color:var(--plum); letter-spacing:-0.05em; }
+  .stat .pct { font-style:italic; font-size: 360px; vertical-align:super; }
+  .stat-sub { position:absolute; top: 220px; left: 80px;
+    font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.4em; text-transform:uppercase;
+    color: var(--plum-700); padding-bottom: 10px;
+    transform: translate(-130px, 220px) rotate(-90deg); transform-origin: left top; white-space:nowrap;
+  }
+  /* tag below stat */
+  .tagline { position:absolute; bottom:240px; left:80px; right:80px;
+    font-family:'Fraunces',serif; font-weight:300; font-size:60px; line-height:1.1; color:var(--ink);
+    letter-spacing:-0.025em;
+    max-width: 720px;
+  }
+  .tagline em { font-style:italic; color: var(--plum); }
+  .footer-row { position:absolute; bottom:80px; left:80px; right:80px;
+    display:flex; align-items:center; justify-content:space-between;
+    border-top:1px solid rgba(40,15,55,.18); padding-top:24px; }
+  .source { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.32em; text-transform:uppercase; color: rgba(14,7,18,.55); }
+  .brand { font-family:'Fraunces',serif; font-size:24px; color:var(--ink); }
+  .brand em { color: var(--plum); font-style:normal; }
+  /* corner ornament */
+  .ornament { position:absolute; bottom:380px; right:80px;
+    display:flex; flex-direction:column; gap:10px; align-items:flex-end;
+    font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.32em; color: var(--plum-900); text-transform:uppercase;
+  }
+  .ornament .dot { width:8px; height:8px; border-radius:50%; background: var(--plum-900); }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="split"></div>
+    <div class="grain"></div>
+
+    <div class="top-row">
+      <span class="label"><span class="rule"></span><span>Statistic · 03 / 10</span></span>
+      <span>Lorem · Sed · 2026</span>
+    </div>
+
+    <div class="stat-sub">Excerpt · figure</div>
+
+    <div class="stat-wrap">
+      <span class="stat">94<span class="pct">%</span></span>
+    </div>
+
+    <div class="ornament">
+      <span class="dot"></span>
+      <span>Lorem ipsum<br>dolor sit amet</span>
+    </div>
+
+    <p class="tagline">Of <em>lorem ipsum</em> dolor sit amet, consectetur adipiscing elit.</p>
+
+    <div class="footer-row">
+      <span class="source">Source · Lorem ipsum 2026</span>
+      <span class="brand">Elect<em>Smith</em></span>
+      <span class="source">@electsmith</span>
+    </div>
+  </div>
+</body>
+</html>

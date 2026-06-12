@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Feed 01 · Pull Quote</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --plum: #744577; --plum-700: #482a4b; --plum-900: #1c1020;
+    --cream: #f0e9b6; --cream-50: #fdfaeb; --cream-200: #f0e9b6;
+    --sage: #accfa3; --mint: #84c5b1;
+    --ink: #0e0712; --paper: #faf6e9;
+  }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #ece9e4; min-height: 100vh; }
+  body { display: grid; place-items: center; padding: 32px; font-family: 'Inter Tight', system-ui, sans-serif; }
+  .stage { position: relative; }
+  .canvas {
+    width: 1080px; height: 1080px; position: relative; overflow: hidden;
+    background: var(--paper);
+    transform: scale(min(1, calc((100vw - 64px) / 1080), calc((100vh - 64px) / 1080)));
+    transform-origin: center center;
+    border-radius: 4px;
+    box-shadow: 0 60px 120px -40px rgba(40,15,55,0.35);
+  }
+  /* paper grain */
+  .grain { position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(40,15,55,0.08) 1px, transparent 0);
+    background-size: 4px 4px; opacity: .45; pointer-events: none; }
+  /* warm wash */
+  .wash { position: absolute; inset: 0;
+    background:
+      radial-gradient(60% 50% at 85% 0%, rgba(132,197,177,.25) 0%, transparent 70%),
+      radial-gradient(60% 60% at 0% 100%, rgba(229,220,148,.4) 0%, transparent 70%);
+    pointer-events: none; }
+  /* huge open quote */
+  .open-quote {
+    position: absolute; top: -120px; left: -40px;
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+    font-size: 900px; line-height: 1; color: var(--plum); opacity: .12;
+    user-select: none; pointer-events: none;
+  }
+  /* eyebrow */
+  .eyebrow { position: absolute; top: 80px; left: 80px;
+    display: flex; align-items: center; gap: 18px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--plum-700);
+  }
+  .eyebrow .rule { display: block; width: 60px; height: 1px; background: var(--plum); opacity: .6; }
+  .index {
+    position: absolute; top: 80px; right: 80px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--plum-700); opacity: .7;
+  }
+  /* the quote itself */
+  .quote {
+    position: absolute; top: 190px; left: 80px; right: 80px;
+    font-family: 'Fraunces', serif; font-weight: 300; font-style: italic;
+    font-size: 96px; line-height: 1.08; color: var(--ink);
+    letter-spacing: -0.025em;
+  }
+  .quote .accent { color: var(--plum); font-style: italic; }
+  /* author chip */
+  .chip {
+    position: absolute; bottom: 130px; left: 80px;
+    display: flex; align-items: center; gap: 18px;
+  }
+  .chip .avatar {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--plum) 0%, var(--plum-700) 100%);
+    display: grid; place-items: center;
+    color: var(--cream-50); font-family: 'Fraunces', serif; font-size: 28px; font-weight: 400;
+    box-shadow: 0 10px 24px -10px rgba(40,15,55,0.5);
+  }
+  .chip .meta strong { display: block; font-family: 'Fraunces', serif; font-size: 22px; font-weight: 400; color: var(--ink); }
+  .chip .meta span { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(14,7,18,.55); margin-top: 4px; display: block; }
+
+  /* footer */
+  .foot {
+    position: absolute; bottom: 60px; left: 80px; right: 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.32em;
+    text-transform: uppercase; color: rgba(14,7,18,.45);
+  }
+  .brand { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 400; letter-spacing: -0.01em; color: var(--ink); text-transform: none; }
+  .brand em { color: var(--plum); font-style: normal; }
+
+  .pull-line { position: absolute; left: 80px; right: 80px; bottom: 110px; height: 1px; background: var(--plum); opacity: .25; }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="canvas">
+      <div class="wash"></div>
+      <div class="grain"></div>
+      <div class="open-quote">"</div>
+
+      <div class="eyebrow"><span class="rule"></span><span>Vol. 01 · The Promise</span></div>
+      <div class="index">01 / 10</div>
+
+      <p class="quote">
+        “Lorem ipsum dolor sit <span class="accent">amet,</span> consectetur adipiscing elit — sed do eiusmod <span class="accent">tempor</span> incididunt ut labore.”
+      </p>
+
+      <div class="chip">
+        <div class="avatar">L</div>
+        <div class="meta">
+          <strong>Lorem Ipsum</strong>
+          <span>Consectetur · Adipiscing</span>
+        </div>
+      </div>
+
+      <div class="pull-line"></div>
+      <div class="foot">
+        <span>@electsmith</span>
+        <span class="brand">Elect<em>Smith</em></span>
+        <span>06.11.2026</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -13,6 +13,7 @@ const COLS = [
       { l: 'Our Issues', h: '/issues' },
       { l: 'Endorsements', h: '/endorsements' },
       { l: 'News & press', h: '/news' },
+      { l: 'Social posts', h: '/social-media-posts' },
     ],
   },
   {

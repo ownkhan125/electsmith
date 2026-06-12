@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Feed 05 · Editorial Testimonial</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --plum:#744577; --plum-700:#482a4b; --plum-900:#1c1020; --cream-50:#fdfaeb; --cream-200:#f0e9b6; --mint:#84c5b1; --ink:#0e0712; --paper:#faf6e9; }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html,body { background:#ece9e4; min-height:100vh; }
+  body { display:grid; place-items:center; padding:32px; font-family:'Inter Tight',system-ui,sans-serif; }
+  .canvas { width:1080px; height:1080px; position:relative; overflow:hidden;
+    transform:scale(min(1, calc((100vw - 64px)/1080), calc((100vh - 64px)/1080))); transform-origin:center;
+    border-radius:4px; box-shadow:0 60px 120px -40px rgba(40,15,55,0.4);
+    display:grid; grid-template-columns: 480px 1fr; background: var(--paper);
+  }
+  .photo { position:relative; overflow:hidden;
+    background:
+      linear-gradient(180deg, rgba(28,16,32,0) 30%, rgba(28,16,32,.65) 100%),
+      url('https://images.unsplash.com/photo-1573497019418-b400bb3ab074?w=900&q=80') center/cover no-repeat;
+  }
+  .photo .label { position:absolute; left:24px; bottom:24px; color: var(--cream-50);
+    font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.32em; text-transform:uppercase; }
+  .photo .tag { position:absolute; top:24px; left:24px;
+    display:inline-flex; align-items:center; gap:10px; padding:8px 14px; border-radius:999px;
+    background: rgba(28,16,32,.45); border:1px solid rgba(253,250,235,.3); backdrop-filter: blur(8px);
+    font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.28em; text-transform:uppercase; color: var(--cream-50);
+  }
+  .photo .tag .dot { width:8px; height:8px; border-radius:50%; background: var(--mint); }
+
+  .right { position:relative; padding:80px 70px 70px 70px; display:flex; flex-direction:column; }
+  .eyebrow { display:flex; align-items:center; gap:16px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.32em; text-transform:uppercase; color: var(--plum); margin-bottom: 28px; }
+  .eyebrow .rule { width:48px; height:1px; background: var(--plum); opacity:.65; }
+  .open { font-family:'Fraunces',serif; font-weight:300; font-style:italic; font-size: 220px; line-height:.7; color: var(--plum); opacity:.18; margin-bottom: -30px; }
+  .quote { font-family:'Fraunces',serif; font-weight:300; font-style:italic; font-size: 50px; line-height:1.12; color: var(--ink); letter-spacing:-0.02em; }
+  .quote em { font-style:italic; color: var(--plum); }
+  .attribution { margin-top: auto; padding-top: 32px; border-top: 1px solid rgba(40,15,55,.16); }
+  .attribution .name { font-family:'Fraunces',serif; font-size: 28px; color: var(--ink); }
+  .attribution .role { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color: rgba(14,7,18,.55); margin-top: 6px; }
+  .footer-row { margin-top: 28px; display:flex; align-items:center; justify-content:space-between;
+    font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.32em; text-transform:uppercase; color: rgba(14,7,18,.5);
+  }
+  .brand { font-family:'Fraunces',serif; font-size:18px; color: var(--ink); text-transform:none; letter-spacing:0; }
+  .brand em { color: var(--plum); font-style:normal; }
+  .seal { position:absolute; top:80px; right:70px;
+    width:88px; height:88px; border-radius:50%; border:1px solid rgba(40,15,55,.25);
+    display:grid; place-items:center;
+    font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.32em; color: var(--plum); text-align:center; text-transform:uppercase;
+  }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="photo">
+      <span class="tag"><span class="dot"></span><span>Endorsed</span></span>
+      <span class="label">Photo · Lorem ipsum</span>
+    </div>
+    <div class="right">
+      <div class="seal">Vol<br>05/10</div>
+      <div class="eyebrow"><span class="rule"></span><span>In their words</span></div>
+      <div class="open">"</div>
+      <p class="quote">Lorem ipsum dolor sit <em>amet,</em> consectetur adipiscing elit — sed do eiusmod <em>tempor</em> incididunt.</p>
+      <div class="attribution">
+        <p class="name">— Lorem Ipsum</p>
+        <p class="role">Consectetur · Adipiscing Elit</p>
+      </div>
+      <div class="footer-row">
+        <span>@electsmith</span>
+        <span class="brand">Elect<em>Smith</em></span>
+        <span>06.11.26</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

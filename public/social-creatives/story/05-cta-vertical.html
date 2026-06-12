@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Story 05 · CTA Vertical</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --plum:#744577; --plum-700:#482a4b; --plum-900:#1c1020; --cream-50:#fdfaeb; --cream-200:#f0e9b6; --mint:#84c5b1; --ink:#0e0712; --paper:#faf6e9; }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html,body { background:#ece9e4; min-height:100vh; }
+  body { display:grid; place-items:center; padding:24px; font-family:'Inter Tight',system-ui,sans-serif; }
+  .canvas { width:1080px; height:1920px; position:relative; overflow:hidden;
+    transform: scale(min(1, calc((100vw - 48px)/1080), calc((100vh - 48px)/1920))); transform-origin: center;
+    border-radius:6px; box-shadow:0 60px 120px -40px rgba(40,15,55,0.5);
+    background: var(--plum-900);
+  }
+  /* top half image */
+  .photo { position:absolute; top:0; left:0; right:0; height: 60%;
+    background:
+      linear-gradient(180deg, rgba(28,16,32,.15) 0%, rgba(28,16,32,.0) 30%, rgba(28,16,32,.65) 100%),
+      url('https://images.unsplash.com/photo-1442329192620-d3c34c44ee7e?w=1400&q=80') center/cover no-repeat;
+  }
+  .top-meta { position:absolute; top:160px; left:100px; right:100px;
+    display:flex; align-items:center; justify-content:space-between; color: var(--cream-50);
+    font-family:'JetBrains Mono',monospace; font-size:18px; letter-spacing:.36em; text-transform:uppercase;
+  }
+  .top-meta .pill { display:inline-flex; gap:14px; align-items:center; padding:14px 24px; border-radius:999px;
+    background: rgba(28,16,32,.45); border:1px solid rgba(253,250,235,.3); backdrop-filter: blur(10px);
+  }
+  .top-meta .pill .dot { width:12px; height:12px; border-radius:50%; background: var(--mint); }
+  .top-meta .index { opacity:.7; }
+
+  /* large hero text over photo */
+  .hero-text { position:absolute; top: 600px; left:100px; right:100px; color: var(--cream-50);
+    font-family:'Fraunces',serif; font-weight:300; font-style:italic; font-size: 96px; line-height:1.1; letter-spacing:-0.02em;
+    max-width: 720px;
+  }
+  .hero-text em { font-style:italic; color: var(--mint); }
+
+  /* bottom cream panel */
+  .panel { position:absolute; bottom:0; left:0; right:0; height: 40%;
+    background: linear-gradient(180deg, var(--paper) 0%, var(--cream-200) 100%);
+    border-top-left-radius: 48px; border-top-right-radius: 48px;
+    padding: 100px 100px 0;
+  }
+  .panel::before {
+    content:''; position:absolute; top: 30px; left: 50%; transform: translateX(-50%);
+    width: 100px; height: 5px; border-radius:5px; background: rgba(40,15,55,.18);
+  }
+  .panel .label { font-family:'JetBrains Mono',monospace; font-size:18px; letter-spacing:.4em; text-transform:uppercase; color: var(--plum); }
+  .panel h2 { margin-top: 20px; font-family:'Fraunces',serif; font-weight:300; font-size: 144px; line-height:.95; letter-spacing:-0.04em; color: var(--ink); }
+  .panel h2 em { font-style:italic; color: var(--plum); }
+
+  /* swipe-up CTA */
+  .swipe { position:absolute; bottom: 180px; left:100px; right:100px;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 36px 48px; border-radius: 999px; background: var(--plum-900); color: var(--cream-50);
+    box-shadow: 0 40px 80px -30px rgba(28,16,32,.6);
+  }
+  .swipe .label { font-family:'Fraunces',serif; font-style:italic; font-size: 56px; }
+  .swipe .arrow { width:96px; height:96px; border-radius:50%; background: var(--mint); color: var(--ink);
+    display:grid; place-items:center; font-family:'Fraunces',serif; font-size: 48px; font-style:normal; }
+
+  .brand-row { position:absolute; bottom: 90px; left:100px; right:100px;
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:'JetBrains Mono',monospace; font-size:18px; letter-spacing:.36em; text-transform:uppercase; color: rgba(14,7,18,.5);
+  }
+  .brand-row .brand { font-family:'Fraunces',serif; font-size:32px; letter-spacing:0; text-transform:none; color: var(--ink); }
+  .brand-row .brand em { color: var(--plum); font-style:normal; }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="photo"></div>
+
+    <div class="top-meta">
+      <span class="pill"><span class="dot"></span><span>Limited · Story 05</span></span>
+      <span class="index">06 · 11 · 26</span>
+    </div>
+
+    <h1 class="hero-text">Lorem ipsum<br><em>dolor</em> sit amet —<br>consectetur.</h1>
+
+    <div class="panel">
+      <div class="label">— A call to act —</div>
+      <h2>Donate<br><em>today.</em></h2>
+    </div>
+
+    <a class="swipe">
+      <span class="label">Tap to support →</span>
+      <span class="arrow">↗</span>
+    </a>
+
+    <div class="brand-row">
+      <span class="brand">Elect<em>Smith</em></span>
+      <span>@electsmith</span>
+    </div>
+  </div>
+</body>
+</html>
